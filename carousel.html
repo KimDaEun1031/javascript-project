@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+    <link rel="icon" href="./images/favicon.ico" />   
+    <title>Carousel</title>
+  </head>
+  <style>
+    body {
+        background-image: url("./images/bg.jpeg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        font-family: "Varela Round", sans-serif;
+        text-align: center;
+    }
+
+    h1 {
+        font-family: "Pacifico", cursive;
+        font-size: 72px;
+    }
+
+    a:visited {
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+    }
+
+    a:link {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    }
+
+    .carousel-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;       
+    }
+
+    .slide-image {
+        width: 400px;
+        height: 400px;
+    }
+
+    .slide-image img {
+        width: 400px;
+        height: 400px; 
+    }
+
+    .chevron button {
+        outline: none;
+        border: none;
+        background-color: rgb(168, 168, 168);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        margin: 100px;
+    }
+
+    .chevron button i {
+        font-size: 30px;
+        margin-top: 4px;
+        color: rgb(43, 43, 43);
+    }
+
+    .circle i {
+        font-size: 10px;
+        margin: 10px;
+        color: rgb(196, 196, 196);
+    }
+
+    a {
+      background-color: rgb(107, 107, 107);
+      padding: 10px;
+      border-radius: 3px;
+     }
+  </style>
+
+  <body>
+    <section>
+      <div class="image-box">
+        <img src="./images/vanilla_coding_logo.png" />
+      </div>
+      <h1>Carousel</h1>
+      
+      <!-- Carousel Start -->
+      <div class="carousel-box">
+        <div  class="chevron">
+          <button class="left-btn">
+            <i class="material-icons">chevron_left</i>
+          </button>        
+        </div>
+        <div class="slide-image">
+          <img id="slide" class="slide" src="./images/image-1.png" alt="">
+        </div>
+        <div  class="chevron">
+          <button class="right-btn">
+            <i class="material-icons">chevron_right</i>
+          </button>        
+        </div>
+      </div>    
+      <div class="circle">
+        <i id="dot" class="material-icons 1">circle</i>
+        <i id="dot" class="material-icons 2">circle</i>
+        <i id="dot" class="material-icons 3">circle</i>
+        <i id="dot" class="material-icons 4">circle</i>
+        <i id="dot" class="material-icons 5">circle</i>
+      </div>
+      <!-- Carousel End -->
+      <br><br>
+      <a href="./index.html">돌아가기</a>
+    </section>
+
+    <script>
+      var leftBtn = document.querySelector('.left-btn');
+      var rightBtn = document.querySelector('.right-btn');
+      var dotBtn = document.querySelector('.circle');
+
+      var index = 1;
+
+      var child = dotBtn.children;
+      child[0].style.color = '#000000';
+
+      function nextImg() { 
+          var nexttarget = document.querySelector('.slide'); 
+          index = index + 1 < 6 ? index + 1 : 1;         
+          nexttarget.src = "./images/image-" +index+ ".png";
+          containsDot();
+      };
+      rightBtn.addEventListener('click', nextImg);
+
+      function preImg() { 
+          var pretarget = document.querySelector('.slide'); 
+          index = index - 1 > 0 ? index - 1 : 5;         
+          pretarget.src = "./images/image-" +index+ ".png";
+          containsDot();
+      };
+      leftBtn.addEventListener('click', preImg);
+
+      function selectDot(ev) {   
+        var eventTarget = ev.target;    
+        var className = eventTarget.className;
+        var idx = className.split(' ');
+        index = idx[1];
+        
+        containsDot();
+        
+        document.querySelector('.slide').src = "./images/image-" +index+ ".png";        
+      }
+      dotBtn.addEventListener('click', selectDot);
+
+      function containsDot() {
+        for (var i = 0; i < 5; i++) {
+          if(i===index-1) {
+            continue;
+          }
+          child[i].style.removeProperty("color");
+        }
+        
+        child[index-1].style.color = '#000000';
+      }
+
+    </script>
+  </body>
+</html>
