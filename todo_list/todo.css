@@ -1,0 +1,174 @@
+/*초기화*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: inline-block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a:link {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+a:visited {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+/*전체 영역*/
+
+@font-face {
+    font-family: 'cookieRun';
+    src: url('./CookieRun\ Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'cookieRunBold';
+    src: url('./CookieRun\ Bold.ttf') format('truetype');
+}
+
+* {
+    text-align: center; 
+    font-family: 'cookieRun';
+}
+
+body {
+    height: 1000px;
+    width: 100%;
+    background-image: url(./bitch.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.todo-container {
+    display: flex;
+    justify-content: center;
+}
+
+.todo-body {
+    background-color: rgb(214, 192, 164);
+    width: 500px;
+    height: 500px;
+    margin-top: 300px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+}
+
+.todo-body .create-todo {
+    background-color: rgb(255, 245, 231);
+    margin: 10px;
+    margin-bottom: 30px;
+    height: 50px;
+    border-radius: 10px;
+    box-shadow: 1px 3px 2px rgba(94, 94, 94, 0.733);
+    display: flex;
+}
+
+.todo-body .create-todo .todo-input {
+    height: 30px;
+    width: 80%;
+    background-color: rgb(255, 245, 231);
+    text-align: left;
+    float: left;
+    margin: 6px;
+    font-size: 20px;
+    outline: none;
+    border-style: none none solid none;
+    
+}
+
+.todo-body .create-todo .save {
+    background-color: rgb(122, 206, 188);
+    margin: 7px;
+    margin-left: 15px;   
+    padding: 5px 10px 7px;
+    outline: none;
+    border: none;
+    border-radius: 20px;
+    color: rgb(255, 255, 255);
+    font-family: 'cookieRunBold';
+    font-size: 15px;
+    box-shadow: 1px 1px 2px rgb(63, 117, 106);
+    transition-duration: 0.3s;
+}
+
+.todo-body .create-todo .save:active {
+    box-shadow: none;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.view-todolist .todo-list .list-box {
+    background-color: rgb(255, 251, 245);
+    margin: 10px;
+    text-align: left;
+    padding: 7px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+    color: rgb(56, 56, 56);
+}
+
+.view-todolist .todo-list .list-box input{
+    margin-top: 6px;
+}
+
+.view-todolist .todo-list .list-box span {
+    font-family: 'cookieRun';
+    font-size: 22px;
+    text-align: left;
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+a {
+    background-color: rgb(107, 107, 107);
+    padding: 10px;
+    border-radius: 3px;
+    color: white;
+}
