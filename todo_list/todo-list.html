@@ -12,9 +12,9 @@
 <body>
     <div class="todo-container">
         <div class="todo-body">
-            <form class="create-todo">
-                <input type="text" value="" placeholder="할 일을 추가해주세요." class="todo-input">
-                <input type="button" class="save" value="저장" onclick="saveTodo()">
+            <form class="create-todo" onsubmit="return false">
+                <input type="text" value="" placeholder="할 일을 추가해주세요." class="todo-input" onkeyup="if(window.event.keyCode==13){createTodo()}">
+                <input type="button" class="save" value="저장" onclick="createTodo()">
             </form>
             <div class="view-todolist">
                 <ul class="todo-list"></ul>
