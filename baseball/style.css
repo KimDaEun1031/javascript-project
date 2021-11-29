@@ -1,0 +1,175 @@
+a:link {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+a:visited {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(43, 43, 43);
+  text-decoration: none;
+}
+
+@font-face {
+  font-family: 'cookieRun';
+  src: url('./font/CookieRun\ Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'cookieRunBold';
+  src: url('./font/CookieRun\ Bold.ttf') format('truetype');
+}
+
+* {
+  text-align: center; 
+  font-family: 'cookieRun';
+}
+
+body {
+  background-image: url("./images/bg.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Varela Round", sans-serif;
+}
+
+h1 {
+  font-family: "Pacifico", cursive;
+  text-align: center;
+  font-size: 72px;
+}
+
+
+.game-body {
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+} 
+
+.game-board {
+  height: 500px;
+  width: 500px;
+  background-color: rgb(226, 215, 193);
+  border-radius: 10px;
+}
+
+.game-board .game-start button {
+  margin-top: 200px;
+  outline: none;
+  border: none;
+  padding: 15px;
+  font-size: 30px;
+  font-family: 'cookieRunBold';
+  color: hsl(209, 72%, 62%);
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+}
+
+.game-board .game-container {
+  margin-top: 50px;
+  display: none;
+}
+
+.game-board .game-container .game-result-info p {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.game-board .game-container .game-result-info .game-result {
+  background-color: rgb(255, 255, 255);
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.game-board .game-container .game-result-info .game-result span {
+  font-size: 100px;
+}
+
+.game-board .game-container .game-result-info .game-result p {
+  font-size: 30px;
+}
+
+.game-board .game-container .input-number {
+  font-size: 30px;
+  padding: 2px;
+  margin-top: 5px;
+  width: 150px;
+  outline: none;
+}
+
+.game-board .game-container .restart {
+  display: none;
+  outline: none;
+  border: none;
+  padding: 5px;
+  margin-top: 10px;
+  margin-right: 45px;
+  font-size: 20px;
+  color: hsl(0, 72%, 62%);
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+}
+
+.game-board .game-rule {
+  display: none;
+  float: left;
+  margin: 10px;
+  margin-top: 50px; 
+}
+
+.game-board .game-rule button{
+  background-color: rgba(255, 255, 255, 0);
+  outline: none;
+  border: none;
+}
+
+/* modal */
+
+.modal {
+  display: none;
+}
+
+.modal-body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(36, 36, 36, 0.4);
+}
+
+.modal-container {
+  position: absolute;
+  background-color: white;
+  width: 600px;
+  height: 700px;
+  top: 30%;
+  border-radius: 10px;
+  box-shadow: 1px 2px 4px rgb(56, 56, 56);
+}
+.modal-container button {
+  background-color: rgba(255, 255, 255, 0);
+  outline: none;
+  border: none;
+  float: left;
+}
+
+.modal-container button i {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.modal-container p {
+  float: left;
+  font-size: 20px;
+  margin-left: 5px;
+}
+
+.modal-container p span {
+  color: rgb(212, 97, 97);
+}

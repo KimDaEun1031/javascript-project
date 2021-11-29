@@ -65,3 +65,11 @@ body ul li {
     padding: 10px;
     border-radius: 5px;
 }
+
+h3 {
+  background-color: rgb(216, 255, 206);
+  padding: 10px 10px 30px 10px;
+  font-size: 25px;
+  font-family: cursive;
+  color: rgb(71, 121, 165);
+}
