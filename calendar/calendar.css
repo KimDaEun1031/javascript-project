@@ -1,0 +1,174 @@
+/*초기화*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: inline-block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a:link {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+a:visited {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+@font-face {
+    font-family: 'fredoka';
+    src: url('../font/FredokaOne-Regular.ttf') format('truetype');
+}
+
+  
+* {
+    text-align: center; 
+    font-family: 'fredoka';
+}
+
+body {
+  background-image: url("./images/bg.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Varela Round", sans-serif;
+  font-family: 'fredoka';
+  margin: 20px;
+}
+
+h1 {
+  font-family: "Pacifico", cursive;
+  text-align: center;
+  font-size: 72px;
+  margin: 80px;
+}
+
+.image-box img {
+    width: 250px;
+}
+
+.calendar-body {
+    display: flex;
+    justify-content: center;
+}
+
+.calendar-box {
+    background-color: rgb(241, 179, 179);
+    width: 700px;
+    height: 700px;
+    border-radius: 10px;
+}
+
+.calendar-box .mini-calendar {
+    background-color: white;
+    width:160px;
+    height:160px;
+    margin-left: 39%;
+    border-radius: 10px;
+    margin-top: 30px;
+    padding-top: 15px;
+}
+
+.calendar-box .mini-calendar .t-day {
+    font-size: 55px;
+    margin-bottom: 20px;
+}
+
+.calendar-box .mini-calendar .n-day {
+    font-size: 55px;
+    margin-top: 10px;
+}
+
+hr {
+    border: 2px solid rgba(54, 54, 54, 0.247);
+    margin: 0 auto;
+    width: 80%;
+    border-radius: 50px;
+}
+
+.calendar-box .month-year {
+    font-size: 35px;
+    margin-top: 40px;
+}
+
+.calendar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.calendar-container i {
+    font-size: 64px;
+    margin: 30px;
+}
+
+.calendar-container .calendar {
+    background-color: blanchedalmond;
+    width: 500px;
+    height: 350px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    width: 400px;
+    font-size: 30px;
+    border: 1px solid rgba(255, 255, 255, 0);
+    border-collapse: collapse;   
+}
+
+th, td {
+    border: 1px solid rgba(70, 131, 180, 0);
+    height: 40px;
+    padding-top: 5px;
+}
+
+.day {
+    margin-left: 5px;
+    margin-right: 5px;
+}
