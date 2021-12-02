@@ -157,15 +157,15 @@ hr {
 
 table {
     width: 400px;
-    font-size: 30px;
-    border: 1px solid rgba(255, 255, 255, 0);
+    font-size: 25px;
+    border: 1px solid rgb(70, 131, 180);
     border-collapse: collapse;   
 }
 
 th, td {
-    border: 1px solid rgba(70, 131, 180, 0);
+    border: 1px solid rgb(70, 131, 180);
     height: 40px;
-    padding-top: 5px;
+    padding-top: 3px;
 }
 
 .day {
