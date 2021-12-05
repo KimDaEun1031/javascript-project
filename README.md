@@ -16,6 +16,10 @@ Hex code를 랜덤으로 생성해 배경색을 랜덤으로 바꾸는 프로젝
 랜덤으로 나오는 3자릿수를 10번 안에 맞추는 게임
 > https://kimdaeun1031.github.io/javascript-project/baseball/index.html
 
+## 6. Calendar
+달력
+> 
+
 ## 5. Random Box (제작 중)
 등록한 선물들을 랜덤확률로 얻을 수 있는 앱
 > 
