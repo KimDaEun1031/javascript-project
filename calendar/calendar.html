@@ -35,13 +35,22 @@
               </div>
               <div class="month-year"></div>
               <div class="calendar-container">
-                  <i class="material-icons before">navigate_before</i>
+                  <i class="material-icons before" onclick="prev()">navigate_before</i>
                   <div class="calendar">
                       <table style="table-layout: fixed;">
+                          <tr>
+                            <td class = "sun">Sun</td>
+                            <td>Mon</td>
+                            <td>Tue</td>
+                            <td>Wed</td>
+                            <td>Thu</td>
+                            <td>Fri</td>
+                            <td class= "sat">Sat</td>
+                          </tr>
                           <tbody></tbody>                        
                       </table>                      
                   </div>
-                  <i class="material-icons after">navigate_next</i>
+                  <i class="material-icons after" onclick="next()">navigate_next</i>
               </div>
           </div>
       </div>

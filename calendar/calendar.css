@@ -158,12 +158,12 @@ hr {
 table {
     width: 400px;
     font-size: 25px;
-    border: 1px solid rgb(70, 131, 180);
+    border: 1px solid rgba(70, 131, 180, 0);
     border-collapse: collapse;   
 }
 
 th, td {
-    border: 1px solid rgb(70, 131, 180);
+    border: 1px solid rgba(70, 131, 180, 0);
     height: 40px;
     padding-top: 3px;
 }
@@ -171,4 +171,16 @@ th, td {
 .day {
     margin-left: 5px;
     margin-right: 5px;
+}
+
+.sun {
+  color: rgb(214, 30, 30);
+}
+
+.sat {
+  color: rgb(25, 134, 230);
+}
+
+.active {
+  color: rgb(41, 190, 120);
 }
