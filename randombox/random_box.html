@@ -5,8 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="shortcut icon" href="./image/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./random_box.css">
+
     <title>Random Box</title>
 </head>
 <body>
@@ -24,13 +26,29 @@
     <hr>
     <section>
         <div class="present-list">
+            <button class="add-list">
+                <i class="material-icons">redeem</i>
+                <p>선물 추가하기</p>
+            </button>
             <div class="present-box">
+                <p>선물 리스트</p><hr>
                 <ul>
-                    <li class="persent">90% 꽝</li>
-                    <li class="persent">5% 핸드크림</li>
-                    <li class="persent">3% 붕어빵 메이커</li>
-                    <li class="persent">1% 집순이 담요</li>
-                    <li class="persent">1% 유튜브 프리미엄권</li>
+                    <li class="present">
+                        <span id="bomb">꽝</span>
+                        <div class="input-persent">
+                            <input type="range" class="range" value="90" min="0" max="100">
+                            <input type="text" class="range-value" value="90" placeholder="95%">
+                        </div>                        
+                    </li>
+                    
+                    <li class="present">
+                        <span class="category">펫 용품 / 강아지 사료</span>
+                        <input type="text" class="present-name" value="탐사 6free 강아지 사료 연어 레시피" readonly>
+                        <div class="input-persent">
+                            <input type="range" class="range" value="10" min="0" max="100">
+                            <input type="text" class="range-value" value="10" placeholder="95%">
+                        </div>    
+                    </li>
                 </ul>
             </div>
         </div><hr>
