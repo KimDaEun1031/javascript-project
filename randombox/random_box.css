@@ -151,27 +151,62 @@ section {
   margin: 10px;
   padding: 5px;
   /* border: 3px solid rgb(69, 151, 144); */
+  overflow: auto;
 }
 
-.present-box p {
+/* 선물리스트 스크롤 바 */
+
+.present-box::-webkit-scrollbar {
+  width: 5px;
+}
+
+.present-box::-webkit-scrollbar-thumb {
+  background-color: rgb(240, 217, 140);
+  border-radius: 10px;
+}
+
+/* 선물리스트 p 태그 */
+
+.present-list .p-list {
   font-size: 20px;
-  margin-bottom: 5px;
+  margin: 10px 15px 1px 15px;
   color: aliceblue;
   font-weight: 900;
 }
 
-.present-box hr {
-  border: solid 2px rgb(194, 124, 34);
+.present-list hr {
+  border: solid 3px rgb(194, 124, 34);
+  margin: 1px 15px 1px 15px;
 }
 
 .present {
   background-color: antiquewhite;
   width: 250px;
   height: 100px;
-  margin: 15px 5px 10px 5px;
+  margin: 1px 5px 10px 5px;
   padding: 5px;
   border-radius: 10px;
   font-family: 'cookieRunBold';
+}
+
+/* present-header */
+
+.present .present-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.present-header .present-number {
+  font-size: 15px;
+  text-align: center;
+  padding-top: 5px;
+  color: rgb(245, 245, 245);
+  background-color: rgb(48, 104, 104);
+  width: 25px;
+  height: 20px;
+  border-radius: 50%;
 }
 
 .present .category {
@@ -190,16 +225,33 @@ section {
   display: inline-block;
 }
 
+/* close button */
+
+.present-header .closeBtn {
+  padding: 0;
+  outline: none;
+  border: none;
+  background-color: antiquewhite;
+}
+
+.present-header .closeBtn i {
+  font-size: 22px;
+  color: rgb(131, 131, 131);
+}
+
+/* marquee present-name */
+
 .present .present-name {
   outline: none;
   border: none;
   background-color: antiquewhite;
   width: 98%;
-  height: 55px;
-  margin-bottom: 3px;
+  height: 40px;
   font-size: 25px;
   font-family: 'cookieRunBold';
 }
+
+/* input-persent */
 
 .input-persent {
   display: flex;
@@ -216,6 +268,8 @@ section {
 .range-value {
   width: 30px;
 }
+
+/* random-box*/
 
 .random-box {
   background-color: rgb(62, 119, 168);
