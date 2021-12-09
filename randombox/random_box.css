@@ -276,3 +276,174 @@ section {
   width: 100%;
   height: 100%;
 }
+
+/* modal */
+
+.modal {
+  /* display: none; */
+}
+
+.modal-body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(36, 36, 36, 0.4);
+}
+
+.modal-container {
+  position: absolute;
+  background-color: rgba(14, 66, 62, 0.877);
+  width: 600px;
+  height: 600px;
+  top: 10%;
+  border-radius: 10px;
+  box-shadow: 1px 2px 4px rgb(56, 56, 56);
+}
+
+.modal-title button {
+  outline: none;
+  border: none;
+  background-color: rgba(223, 223, 223, 0);
+}
+
+.modal-title button i {
+  font-size: 40px;
+  margin-top: -15px;
+  padding-bottom: 10px;
+  color: rgb(240, 164, 0);
+}
+
+.search-box {
+  display: flex;
+  justify-content: center;
+  margin: 2px 20px 20px 20px;
+}
+
+.search-box select {
+  outline: none;
+  height: 39px;
+  margin-top: 1px;
+  background-color: blanchedalmond;
+  border: 1px rgb(233, 210, 176);
+  border-style: none solid none none;
+  border-radius: 10px 0 0 10px;
+  font-weight: 600;
+  color: rgb(112, 112, 112);
+}
+
+.search-box .search {
+  width: 100%;
+  background-color: rgba(177, 177, 177, 0);
+  display: flex;
+}
+
+.search-box .search input {
+  width: 83%;
+  height: 37px;
+  outline: none;
+  border: none;
+  margin-top: 1px;
+
+}
+
+.search-box .search button {
+  width: 60px;
+  height: 39px;
+  outline: none;
+  border: 1px rgb(233, 210, 176);
+  border-radius: 0 10px 10px 0;
+  border-style: none none none solid;
+  background-color: blanchedalmond;
+  margin-top: 1px;
+}
+
+.search-box .search button i {
+  margin-top: 2px;
+  font-weight: 600;
+  color: rgb(112, 112, 112);
+}
+
+.present-container .present-image {
+  width: 300px;
+  height: 300px;
+  border: 5px solid rgb(182, 161, 131);
+  border-radius: 10px;
+  margin-left: 24%;
+  margin-bottom: 20px;
+}
+
+.present-container hr {
+  margin: 0 50px 10px 50px;
+  border: solid 2px rgb(240, 164, 0);
+  border-radius: 10px;
+}
+
+.present-container .present-image img {
+  width: 300px;
+  height: 300px;
+  border-radius: 4px;
+}
+
+.present-container .present-info {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.present-container .present-info span {
+  font-family: 'cookieRunBold';
+  font-size: 20px;
+  color: rgb(255, 255, 255);
+}
+
+.present-container .present-info span input {
+  border: none;
+  outline: none;
+  height: 30px;
+  background-color: blanchedalmond;
+  border-radius: 10px;
+  color: rgb(36, 36, 36);
+  font-family: 'cookieRunBold';
+}
+
+.present-container .present-info span .price {
+  width: 100px;
+}
+
+.present-container p {
+  font-family: 'cookieRunBold';
+  font-size: 20px;
+  color: rgb(255, 255, 255);
+  margin-left: 37px;
+}
+
+.present-container .persent {
+  display: flex;
+  justify-content: center;
+  margin: 20px 50px 15px 50px;
+}
+
+.present-container .persent input {
+  border: none;
+  outline: none;
+  background-color: blanchedalmond;
+  border-radius: 5px;
+  margin-left: 10px;
+  padding-bottom: 2px;
+  font-size: 17px;
+  text-align: center;
+  color: rgb(36, 36, 36);
+  font-family: 'cookieRunBold';
+}
+
+.present-container .persent span {
+  font-size: 25px;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-family: 'cookieRunBold';
+  margin-left: 5px;
+}
