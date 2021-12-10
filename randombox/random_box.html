@@ -13,12 +13,13 @@
 </head>
 <body>
     <!-- 반응형 웹 만들기 -->
+    <!-- 선물리스트 : 뽑은 선물을 저장하는 곳 -->
     <header>
         <a href="./random_box.html"><img id="logo" src="./image/logo.png" alt=""></a>
         <div class="menu">
             <ul class="menu-box">
-                <li><a href="">선물 리스트</a></li>
                 <li><a href="">선물 관리</a></li>
+                <li><a href="">선물함</a></li>            
                 <li><a href="../index.html">HOME</a></li>
             </ul>
         </div>
@@ -58,7 +59,41 @@
             </div>
         </div><hr>
         <div class="random-box">
+            <!-- 선물 리스트에 선물이 없을 경우 -->
+            <buuton class="nonList">
+                <p>선물을 추가해주세요.</p>
+                <i class="material-icons">add</i>
+            </buuton>
 
+            <!-- 선물 리스트에 선물이 있는 경우 -->
+            <!-- <div class="draw-box">
+                <i class="material-icons">question_mark</i><br>
+                <button class="draw">
+                    <p>랜덤 박스 돌리기</p>
+                </button>
+            </div> -->
+
+            <!-- 선물을 뽑았을 경우 -->
+            <!-- <p class="win-phrase"><span class="win-num">10</span>% 당첨</p> -->
+            <!-- <div class="present-card">            
+                <div class="card-front">
+                    <div class="present-image">
+                        <img src="https://static.megamart.com/product/image/0127/01278279/01278279_1_960.jpg" alt="서울우유">
+                    </div>
+                    <hr>
+                    <div class="present-info">
+                        <span>상품 명 : <input type="text" value="서울우유 나 100% 2.3L" readonly></span><br>
+                        <span>상품 가격 : <input type="text" class="price" value ="6050" readonly> 원</span>
+                    </div>
+                    <hr>
+                    <span class="share">
+                        <i class="material-icons">share</i>
+                    </span>
+                </div>
+                <div class="card-back">
+                    카드를 뒤집어주세요.
+                </div>
+            </div> -->
         </div>
     </section>
 

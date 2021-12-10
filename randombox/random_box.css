@@ -272,15 +272,178 @@ section {
 /* random-box*/
 
 .random-box {
-  background-color: rgb(62, 119, 168);
+  background-color: rgb(234, 255, 221);
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
+
+/* 선물 리스트에 아무것도 없을 경우 */
+
+.random-box .nonList {
+  width: 500px;
+  height: 200px;
+  text-align: center;
+  background-color: rgb(255, 234, 166);
+  box-shadow: 0px 5px 0px rgb(204, 186, 126);
+  border-radius: 10px;
+  margin-bottom: 200px;
+  outline: none;
+  border: none;
+}
+
+.random-box .nonList p {
+  font-size: 40px;
+  font-family: 'cookieRunBold';
+  margin-top: 40px;
+  color: rgb(194, 124, 34);
+}
+
+.random-box .nonList i {
+  font-size: 47px;
+  margin: 30px;
+  background-color: rgba(255, 255, 255, 0.555);
+  border-radius: 50%;
+  color: rgb(194, 124, 34);
+}
+
+/* 선물 리스트에 선물이 있을 때 */
+
+.random-box .draw-box .draw {
+  width: 300px;
+  height: 100px;
+  text-align: center;
+  background-color: rgb(255, 234, 166);
+  box-shadow: 0px 5px 0px rgb(204, 186, 126);
+  border-radius: 10px;
+  margin-bottom: 400px;
+  outline: none;
+  border: none;
+}
+
+.random-box .draw-box i {
+  font-size: 250px;
+  color: rgb(44, 35, 22);
+  margin-left: 20px;
+  margin-top: 400px;
+  margin-bottom: 150px;
+}
+
+.random-box .draw-box .draw p {
+  font-size: 40px;
+  font-family: 'cookieRunBold';
+  color: rgb(194, 124, 34);
+}
+
+/* 추첨한 선물 */
+.random-box .win-phrase {
+  font-size: 55px;
+  font-family: 'cookieRunBold';
+  margin: 10px;
+  padding: 5px 15px 7px 15px;
+  border: 3px rgb(243, 207, 3);
+  border-style: none solid none solid;
+  border-radius: 5px;
+}
+
+/* 당첨 확률에 따른 색 변경 */
+/* 꽝 */
+.random-box .win-phrase .win-num {
+  color: black;
+}
+
+.random-box .present-card {
+  background-color: rgb(255, 202, 87);
+  width: 500px;
+  height: 600px;
+  border-radius: 10px;
+  border: 5px inset rgb(14, 66, 62);
+  box-shadow: 2px 3px 4px rgb(138, 138, 138);
+}
+
+.random-box .present-card .card-back {
+  text-align: center;
+  margin-top: 60%;
+  font-size: 50px;
+  font-family: 'cookieRunBold';
+  color: rgb(87, 54, 11);
+}
+
+.random-box .present-card .card-front {
+
+}
+
+.random-box .present-card .card-front .present-image {
+  width: 300px;
+  height: 300px;
+  border: 5px solid rgb(182, 161, 131);
+  border-radius: 10px;
+  margin-left: 20%;
+  margin-top: 10%;
+  margin-bottom: 20px;
+}
+
+.random-box .present-card .card-front .present-image img {
+  height: 300px;
+  width: 300px;
+  border-radius: 5px;
+}
+
+.random-box .present-card .card-front hr {
+  margin: 10px 50px 10px 50px;
+  border: solid 2px rgb(240, 164, 0);
+  border-radius: 10px;
+}
+
+.random-box .present-card .card-front .present-info {
+  margin-left: 30px;
+  margin-bottom: 10px;
+}
+
+.random-box .present-card .card-front .present-info span {
+  font-family: 'cookieRunBold';
+  font-size: 25px;
+  color: rgb(36, 36, 36);
+  margin: 10px;
+}
+
+.random-box .present-card .card-front .present-info span input {
+  border: none;
+  outline: none;
+  height: 40px;
+  background-color: rgb(255, 202, 87);
+  font-size: 25px;
+  color: rgb(36, 36, 36);
+  font-family: 'cookieRunBold';
+}
+
+.random-box .present-card .card-front .present-info span .price {
+  width: 13%;
+}
+
+.random-box .present-card .card-front .share {
+  text-align: center;
+  margin-top: 100px;
+  margin-left: 45%;
+}
+
+.random-box .present-card .card-front .share i {
+  font-size: 30px;
+  margin-top: 20px;
+  padding: 13px 13px 13px 10px;
+  background-color: rgba(66, 66, 66, 0.541);
+  color: rgb(228, 228, 228);
+  border-radius: 50%;
+  box-shadow: 1px 3px 4px rgba(63, 63, 63, 0.836);
+
 
 /* modal */
 
 .modal {
-  /* display: none; */
+  display: none;
 }
 
 .modal-body {
@@ -298,8 +461,9 @@ section {
   position: absolute;
   background-color: rgba(14, 66, 62, 0.877);
   width: 600px;
-  height: 600px;
+  height: 630px;
   top: 10%;
+  border: 5px solid rgba(250, 190, 61, 0.918);
   border-radius: 10px;
   box-shadow: 1px 2px 4px rgb(56, 56, 56);
 }
