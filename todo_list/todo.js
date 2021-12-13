@@ -10,6 +10,7 @@ var todo_box = document.querySelector('.todo-input');
             const target = event.target;
             const iconBox = target.parentNode;
             const parentLi = iconBox.parentNode;
+            console.log(parentLi);
             // ul 안 li 없애기
             todo_list.remove(parentLi);
             // local storage에 남은 값 없애기 li id 값 가져와서 비교 후 없애기

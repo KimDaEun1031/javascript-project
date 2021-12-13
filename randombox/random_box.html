@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="shortcut icon" href="./image/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./random_box.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <title>Random Box</title>
 </head>
@@ -42,7 +43,7 @@
                         </div>                        
                     </li>
                     
-                    <!-- <li class="present">
+                    <li class="present">
                         <div class="present-header">
                             <span class="present-number">1</span>
                             <span class="category">반려동물용품 / 강아지 사료</span>
@@ -51,9 +52,9 @@
                         <marquee behavior="scroll" direction="left" class="present-name" >탐사 6free 강아지 사료 연어 레시피</marquee>                                             
                         <div class="input-persent">
                             <input type="range" class="range" value="0" min="0" max="100">
-                            <input type="text" class="range-value" value="10" placeholder="95"><span>%</span>
+                            <span class="range-value">0</span><span>%</span>
                         </div>    
-                    </li> -->
+                    </li>
                     
                 </ul>
             </div>
@@ -133,8 +134,9 @@
                     <hr>
                     <p>확률 지정</p>
                     <div class="persent">                       
-                        <input type="range" class="range" value="0" min="0" max="100" onchange="rangeValue(this.value);">
-                        <input type="text" class="range-value" value="0" placeholder="95%">
+                        <input type="range" class="range" value="0" min="0" max="100">
+                        <span class="range-value">0</span>
+                        <!-- <input type="text" class="range-value" value="0" placeholder="95%"> -->
                         <span>%</span>
                     </div>
                     <hr>
@@ -143,7 +145,9 @@
             </div>
         </div>
     </div>
-
+    <script>
+        
+    </script>
     
     <script src="./random_box.js"></script>
 </body>

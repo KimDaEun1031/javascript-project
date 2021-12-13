@@ -1,30 +1,50 @@
 // 버튼 누르면 선물 추가
 const addPresent01 = document.querySelector('.add-list');
 const addPresent02 = document.querySelector('.nonList');
+const modal = document.querySelector('.modal');
+const closeModalBtn = document.querySelector('.close-modal');
 
 addPresent01.addEventListener('click', openModal);
 addPresent02.addEventListener('click', openModal);
 
-const modal = document.querySelector('.modal');
-const closeModal = document.querySelector('.close-modal');
-
-closeModal.addEventListener('click', function(ev) {
-    modal.style.display = 'none';
-})
+closeModalBtn.addEventListener('click', closeModal)
 
 function openModal() {
     modal.style.display = 'inline';
 };
 
-const ul = document.querySelector('#present-list');
+function closeModal() {
+    modal.style.display = 'none';
+}
 
+let ul = document.querySelector('#present-list');
+
+// 카테고리 값 변경
 let categoryValue = function(value) {
     document.querySelector('#product-category').value = value;
 }
 
-let rangeValue = function(value) {
-    document.querySelector('.range').value = value;
-}
+// 확률 값 변경
+let rangeSlider = function(ev) {
+    let div = $('.persent');
+    let range = $('.range');
+    let range_value = $('.range-value');
+    console.
+
+    div.each(function() {
+        range_value.each(function() {
+            var value = $(this).prev().attr('range_value');                 
+            $(this).html(value);
+        });
+
+        range.on('input', function() {
+            $(this).next(range_value).html(this.value);
+            document.querySelector('.range').value = this.value;
+        });
+    });
+};
+rangeSlider();
+
 
 // 선물 목록 요소 생성
 function printPresent() {
@@ -37,7 +57,7 @@ function printPresent() {
     let present_name = document.createElement('marquee');
     let input_present = document.createElement('div');
     let range = document.createElement('input');
-    let range_value = document.createElement('input');
+    let range_value = document.createElement('span');
     let persent = document.createElement('span');
 
     // 만든 요소에 클래스 추가
@@ -56,7 +76,7 @@ function printPresent() {
     range.setAttribute('type', 'range');
     range.setAttribute('max', '100');
     range.setAttribute('min', '0');
-    range_value.setAttribute('type', 'text');
+    // range_value.setAttribute('type', 'text');
 
     //부자 정렬
     present.appendChild(present_header);
@@ -83,8 +103,21 @@ function printPresent() {
     category.textContent = document.querySelector('#product-category').value;
     present_name.textContent = document.querySelector('#product-name').value;
     range.value = document.querySelector('.range').value;
-    range_value.value = document.querySelector('.range').value;
+    
+    range_value.innerHTML = document.querySelector('.range').value;
+    console.log(range_value);
 
     ul.appendChild(present);
+    closeModal();
+    closeBtn.addEventListener('click', removePresent);
+}
+
+// 선물 목록 요소 삭제
+function removePresent(ev) {
+    const target = ev.target;
+    const parent = target.parentNode;
+    const grandParent = parent.parentNode;
+    const greatGrandParent = grandParent.parentNode;
+    ul.removeChild(greatGrandParent);
 }
 
