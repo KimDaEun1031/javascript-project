@@ -28,4 +28,4 @@ Hex code를 랜덤으로 생성해 배경색을 랜덤으로 바꾸는 프로젝
 30일치 자바스크립트 프로젝트
 
 #### Day 1. Drum Kit
-> 
+> https://kimdaeun1031.github.io/javascript-project/JavaScript30/01%20-%20JavaScript%20Drum%20Kit/index-START.html
