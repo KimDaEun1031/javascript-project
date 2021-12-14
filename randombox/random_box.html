@@ -39,23 +39,9 @@
                         <span id="bomb">꽝</span>
                         <div class="input-persent">
                             <input type="range" class="range" value="100" min="0" max="100">
-                            <input type="text" class="range-value" value="100" placeholder="95"><span>%</span>
+                            <span class="range-value">100</span><span>%</span>
                         </div>                        
-                    </li>
-                    
-                    <li class="present">
-                        <div class="present-header">
-                            <span class="present-number">1</span>
-                            <span class="category">반려동물용품 / 강아지 사료</span>
-                            <button class="closeBtn"><i class="material-icons">close</i></button> 
-                        </div>    
-                        <marquee behavior="scroll" direction="left" class="present-name" >탐사 6free 강아지 사료 연어 레시피</marquee>                                             
-                        <div class="input-persent">
-                            <input type="range" class="range" value="0" min="0" max="100">
-                            <span class="range-value">0</span><span>%</span>
-                        </div>    
-                    </li>
-                    
+                    </li>                  
                 </ul>
             </div>
         </div><hr>
@@ -132,16 +118,16 @@
                         <span>상품 가격 : <input type="text" class="price" placeholder="  6050"> 원</span>
                     </div>
                     <hr>
-                    <p>확률 지정</p>
+                    <!-- <p>확률 지정</p>
                     <div class="persent">                       
                         <input type="range" class="range" value="0" min="0" max="100">
                         <span class="range-value">0</span>
-                        <!-- <input type="text" class="range-value" value="0" placeholder="95%"> -->
+                        <input type="text" class="range-value" value="0" placeholder="95%">
                         <span>%</span>
                     </div>
-                    <hr>
+                    <hr> -->
                 </div>   
-                <button class="add-present" onclick="printPresent()">선물 담기</button>         
+                <button class="add-present" onclick="createPresent()">선물 담기</button>         
             </div>
         </div>
     </div>
