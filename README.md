@@ -32,3 +32,6 @@ Hex code를 랜덤으로 생성해 배경색을 랜덤으로 바꾸는 프로젝
 
 #### Day 2. Clock
 > https://kimdaeun1031.github.io/javascript-project/JavaScript30/02%20-%20JS%20and%20CSS%20Clock/index-START.html
+
+#### Day 3. CSS Variables
+> https://kimdaeun1031.github.io/javascript-project/JavaScript30/03%20-%20CSS%20Variables/index-START.html
