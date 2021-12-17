@@ -37,29 +37,91 @@
     
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    // 1500년대에 태어난 발명가
+    let result1 = inventors.filter(inven => inven.year > 1500 && inven.year < 1600);
+    console.log(result1);
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+    // 발명가들의 이름과 성
+    
+    let result2 = inventors.map(function(obj) {
+      let arr = [];
+      arr += obj.first;
+      arr += " " +obj.last;
+      return arr;
+    })
+
+    console.log(result2);
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    // 발명가의 생년월일을 나이가 많은 순부터 나이가 적은 순으로 정렬
+    let result3 = inventors.sort(function(a, b) {
+      let yearA = a.year;
+      let yearB = b.year;
+      if (yearA < yearB) return -1;
+      if (yearA > yearB) return 1;
+      return 0;
+    });
+    console.log(result3);
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
+    // 모든 발명가들이 살아있던 기간를 다 더해서 return
+    let result4 = inventors.reduce((acc, cur) => acc + (cur.passed - cur.year), 0);
+
+    console.log(result4);
 
     // 5. Sort the inventors by years lived
+    // 발명가가 살아있던 기간을 기준으로 정렬
+    let result5 = inventors.sort(function(a, b) {
+      let liveA = a.passed - a.year;
+      let liveB = b.passed - b.year;
+      if (liveA < liveB) return 1;
+      if (liveA > liveB) return -1;
+      return 0;
+    });
+
+    console.log(result5);
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+    // 위의 링크에서 de 를 포함하는 요소를 리스트로 만들어주세요.
+
+    // const category = document.querySelector('.mw-category');
+    // let arr = Array.from(category.querySelectorAll('a'));
+    // let result6 = arr.map(arr => arr.textContent).filter(name => name.includes('de'));
 
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    // people 배열의 last name을 알파벳 순으로 정렬
+    let n = 1;
+    let result7 = people.sort((a, b) => {
+       if(a[n] > b[n]) return 1;
+        if(a[n] < b[n]) return -1;
+        if(a[n] === b[n]){
+            if(a > b) return 1;
+            if(a < b) return -1;
+            return 0;
+        }
+    });
+
+    console.log(result7);
+
 
     // 8. Reduce Exercise
-    // Sum up the instances of each of these
+    // Sum up the instances of each of these 
+    // 아래의 data 배열 안에 있는 요소를 요약하세요.
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
 
+    let result8 = data.reduce(function(allData, datas) {
+      datas in allData ? allData[datas]++ : allData[datas] = 1;
+      return allData; 
+    }, {})
+
+    console.log(result8)
   </script>
 </body>
 </html>

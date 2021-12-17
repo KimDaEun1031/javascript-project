@@ -49,8 +49,9 @@ function printPresent(cate, pren, pri, ran) {
     range.setAttribute('value', '0');
     price.setAttribute('type', 'hidden');
 
-    // 만든 요소에 클래스 추가
+    // 만든 요소에 클래스 & 아이디 추가
     present.classList.add('present');
+    present.id = presentList.length + 1;
     present_header.classList.add('present-header');
     present_number.classList.add('present-number');
     category.classList.add('category');
@@ -111,6 +112,9 @@ function removePresent(ev) {
     const grandParent = parent.parentNode;
     const greatGrandParent = grandParent.parentNode;
     ul.removeChild(greatGrandParent);
+    presentList = presentList.filter((pre) => pre.id !== Number(greatGrandParent.id));
+    setPresent();
+    location.reload();
 }
 
 
@@ -125,17 +129,16 @@ function createPresent(ev) {
 
     printPresent(mCategory, mPresentName ,mPrice, mRange);
     savePresent(mCategory, mPresentName ,mPrice, mRange);
-
 }
 
 // 선물 목록 요소 저장
 function savePresent(category, present_name, price, range) {
     // json 생성
     const presentObj = {
-        category : category.innerHTML,
-        present_name : present_name.innerHTML,
-        price : price.value,
-        range : range.value,
+        category : category,
+        present_name : present_name,
+        price : price,
+        range : range,
         id : presentList.length + 1,
     };
     presentList.push(presentObj);
