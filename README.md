@@ -35,3 +35,6 @@ Hex code를 랜덤으로 생성해 배경색을 랜덤으로 바꾸는 프로젝
 
 #### Day 3. CSS Variables
 > https://kimdaeun1031.github.io/javascript-project/JavaScript30/03%20-%20CSS%20Variables/index-START.html
+
+#### Day 4. Array Cardio
+> https://github.com/KimDaEun1031/javascript-project/blob/master/JavaScript30/04%20-%20Array%20Cardio%20Day%201/index-START.html
