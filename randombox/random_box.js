@@ -91,18 +91,20 @@ function printPresent(cate, pren, pri, ran) {
     price.value = pri;
 
     // range
-    let not = document.querySelector('.range'); // 꽝
-    let notValue = document.querySelector('.range-value'); // 꽝 값
-    range.value = ran;
-    not.value = range.value;
-    notValue.innerHTML = not.value;
+    let blank = document.querySelector('.range'); // 꽝
+    let blankValue = document.querySelector('.range-value'); // 꽝 값
+    range.value = 5;
+    range_value.value = range.value;
+    if (blank.value >= 5) {
+        blank.value = blank.value - range.value;
+        blankValue.innerHTML = blankValue.innerHTML - range.value;
+    }
     range_value.innerHTML = range.value;
 
     ul.appendChild(present);
     closeModal();
     closeBtn.addEventListener('click', removePresent);
     range.addEventListener('input', rangeSlider);
-    not.addEventListener('input', notRangeSlider);
 }
 
 // 선물 목록 요소 삭제
@@ -119,16 +121,19 @@ function removePresent(ev) {
 
 
 // 선물 목록 요소 제작
-function createPresent(ev) {
+function createPresent() {
     let mCategory = document.querySelector('#product-category').value;
     let mPresentName = document.querySelector('#product-name').value;
     let mPrice = document.querySelector('.price').value;
     let mRange = document.querySelector('.range').value;
 
-    console.log(mCategory, mPresentName ,mPrice, mRange)
+    console.log(mRange);
 
-    printPresent(mCategory, mPresentName ,mPrice, mRange);
-    savePresent(mCategory, mPresentName ,mPrice, mRange);
+    if (presentList.length < 20) {
+        printPresent(mCategory, mPresentName ,mPrice, mRange);
+        savePresent(mCategory, mPresentName ,mPrice, mRange);
+    }
+
 }
 
 // 선물 목록 요소 저장
@@ -163,6 +168,8 @@ function loadPresent() {
 }
 loadPresent();
 
+let blank = document.querySelector('.range');
+blank.addEventListener('input', blankRangeSlider);
 // 추가한 선물 확률 조정
 function rangeSlider(ev) {
     const target = ev.target;
@@ -171,10 +178,10 @@ function rangeSlider(ev) {
 }
 
 // 꽝 확률 조정
-function notRangeSlider(ev) {
+function blankRangeSlider(ev) {
     const target = ev.target;
     let brotherTarget = target.nextSibling;
-    let oneMoreTarget = brotherTarget.nextSibling;
+    let oneMoreTarget = brotherTarget.nextSibling; 
     oneMoreTarget.innerHTML = target.value;  
 }
 
