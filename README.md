@@ -41,3 +41,6 @@ Hex code를 랜덤으로 생성해 배경색을 랜덤으로 바꾸는 프로젝
 
 #### Day 5. Flex Panel Gallery
 > https://kimdaeun1031.github.io/javascript-project/JavaScript30/05%20-%20Flex%20Panel%20Gallery/index-START.html
+
+#### Day 6. Type Ahead
+> https://kimdaeun1031.github.io/javascript-project/JavaScript30/06%20-%20Type%20Ahead/index-START.html
