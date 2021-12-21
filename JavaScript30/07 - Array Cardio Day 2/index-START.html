@@ -25,16 +25,34 @@
     ];
 
     // Some and Every Checks
+    let date = new Date();
+    let year = date.getFullYear();
     // Array.prototype.some() // is at least one person 19 or older?
+    // 19살 이상인 사람
+    let result1 = people.some(peoples => year - peoples.year >= 19);
+    console.log({result1})
+
     // Array.prototype.every() // is everyone 19 or older?
+    // 모두 19세 이상인지.
+    let result2 = people.every(peoples => year - peoples.year >= 19);
+    console.log({result2})
 
     // Array.prototype.find()
     // Find is like filter, but instead returns just the one you are looking for
     // find the comment with the ID of 823423
+    // comment id가 823423인 것을 찾아라
+    let result3 = comments.find(comment => comment.id === 823423);
+    console.log(result3);
+
 
     // Array.prototype.findIndex()
     // Find the comment with this ID
     // delete the comment with the ID of 823423
+    // comment id가 823423인 것의 인덱스를 제거
+    let result4 = comments.findIndex(comment => comment.id === 823423);
+    console.log(result4);
+    comments.splice(result4, 1)
+    console.log(comments)
 
   </script>
 </body>
