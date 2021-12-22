@@ -4,16 +4,65 @@
   <meta charset="UTF-8">
   <title>HTML5 Canvas</title>
 </head>
-<body>
-<canvas id="draw" width="800" height="800"></canvas>
-<script>
-</script>
-
 <style>
   html, body {
     margin: 0;
   }
 </style>
+<body>
+<canvas id="draw" width="800" height="800"></canvas>
+<script>
+  const canvas = document.querySelector('#draw');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth; // 윈도우 창 폭
+  canvas.height = window.innerHeight; // 윈도우 창 높이
+  ctx.strokeStyle = '#BADA55'; // 도형의 윤곽선 색 설정
+  ctx.lineJoin = 'round'; // 선들이 만나는 모서리의 모양 설정
+  ctx.lineCap = 'round'; // 선의 끝 모양 설정
+  ctx.lineWidth = 100; // 그려질 선의 두께 설정
 
+
+  let isDrawing = false;
+  let lastX = 0;
+  let lastY = 0;
+  let hue = 0; // 색조, 0~360 사이의 색상환 각도
+  let direction = true;
+
+  function draw(e) {
+    if (!isDrawing) return; 
+
+    ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`; // hsl(색조, 채도, 밝기)
+    ctx.beginPath(); // 도형그리기 시작
+    ctx.moveTo(lastX, lastY); // 선이 시작될 좌표 설정
+    ctx.lineTo(e.offsetX, e.offsetY); // 선이 끝나는 좌표 설정
+    ctx.stroke(); // 선 그리기 시작
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+
+    hue++;
+    if (hue >= 360) {
+      hue = 0;
+    }
+    if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
+      direction = !direction;
+    }
+
+    if(direction) {
+      ctx.lineWidth++;
+    } else {
+      ctx.lineWidth--;
+    }
+  }
+
+  canvas.addEventListener('mousedown', (e) => {
+    isDrawing = true;
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+  });
+
+
+  canvas.addEventListener('mousemove', draw);
+  canvas.addEventListener('mouseup', () => isDrawing = false);
+  canvas.addEventListener('mouseout', () => isDrawing = false);
+
+</script>
 </body>
 </html>
