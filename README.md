@@ -36,7 +36,7 @@ Hex code를 랜덤으로 생성해 배경색을 랜덤으로 바꾸는 프로젝
 #### Day 3. CSS Variables
 > https://kimdaeun1031.github.io/javascript-project/JavaScript30/03%20-%20CSS%20Variables/index-START.html
 
-#### Day 4. Array Cardio
+#### Day 4. Array Cardio 1
 > https://github.com/KimDaEun1031/javascript-project/blob/master/JavaScript30/04%20-%20Array%20Cardio%20Day%201/index-START.html
 
 #### Day 5. Flex Panel Gallery
@@ -44,3 +44,6 @@ Hex code를 랜덤으로 생성해 배경색을 랜덤으로 바꾸는 프로젝
 
 #### Day 6. Type Ahead
 > https://kimdaeun1031.github.io/javascript-project/JavaScript30/06%20-%20Type%20Ahead/index-START.html
+
+#### Day 7. Array Cardio 2
+> https://github.com/KimDaEun1031/javascript-project/blob/master/JavaScript30/07%20-%20Array%20Cardio%20Day%202/index-START.html
