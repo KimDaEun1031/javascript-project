@@ -93,19 +93,50 @@ function printPresent(cate, pren, pri, ran) {
     // range
     let blank = document.querySelector('.range'); // 꽝
     let blankValue = document.querySelector('.range-value'); // 꽝 값
-    range.value = 5;
-    range_value.value = range.value;
-    if (blank.value >= 5) {
+    if (blank.value >= 5 || range.value === 0) {
+        range.value = 5;
+        range_value.value = range.value;
         blank.value = blank.value - range.value;
         blankValue.innerHTML = blankValue.innerHTML - range.value;
     }
     range_value.innerHTML = range.value;
 
+    let max = 100;
+
     ul.appendChild(present);
     closeModal();
     closeBtn.addEventListener('click', removePresent);
-    range.addEventListener('input', rangeSlider);
+    // 선물 실시간 조정
+    range.addEventListener('input', function(ev) {
+        const target = ev.target;  
+        let brotherTarget = target.nextSibling;
+        let temp = brotherTarget.innerHTML;
+        brotherTarget.innerHTML = target.value;
+        
+        let children = ul.children;
+        // console.log([...children])
+        let sum = [...children].reduce((acc, cur) => acc + Number(cur.children[2].children[1].value), 0);
+        console.log(sum)
+        // console.log(ele.children[2].children[1].value)
+        let targetNum = parseInt(brotherTarget.innerHTML);
+        let blankNum = parseInt(blankValue.innerHTML);
+        if (sum > 100) {
+            // setTimeout(function() {
+            //     target.value = temp;
+            //     brotherTarget.innerHTML = temp;
+            // }, 500);     
+            blank.value = max - targetNum;
+            blankValue.innerHTML = blank.value;
+        }
+ 
+
+        // console.log( brotherTarget.innerHTML);
+        // console.log(blankValue.innerHTML);
+
+    });
 }
+
+
 
 // 선물 목록 요소 삭제
 function removePresent(ev) {
@@ -168,14 +199,10 @@ function loadPresent() {
 }
 loadPresent();
 
+
+
 let blank = document.querySelector('.range');
 blank.addEventListener('input', blankRangeSlider);
-// 추가한 선물 확률 조정
-function rangeSlider(ev) {
-    const target = ev.target;
-    let brotherTarget = target.nextSibling;
-    brotherTarget.innerHTML = target.value;
-}
 
 // 꽝 확률 조정
 function blankRangeSlider(ev) {
