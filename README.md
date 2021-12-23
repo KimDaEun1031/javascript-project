@@ -50,3 +50,6 @@ Hex code를 랜덤으로 생성해 배경색을 랜덤으로 바꾸는 프로젝
 
 #### Day 8. HTML Canvas
 > https://kimdaeun1031.github.io/javascript-project/JavaScript30/08%20-%20Fun%20with%20HTML5%20Canvas/index-START.html
+
+#### Day 9. Console Tricks!
+> https://github.com/KimDaEun1031/javascript-project/blob/master/JavaScript30/09%20-%20Dev%20Tools%20Domination/index-START.html
