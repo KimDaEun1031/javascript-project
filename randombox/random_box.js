@@ -17,6 +17,59 @@ function closeModal() {
     modal.style.display = 'none';
 }
 
+const label = document.querySelector('label');
+console.log(label)
+// modal 이미지 파일 추가 시 preview
+$(document).ready(function(){
+    var fileTarget = $('.present-image .upload-hidden');
+ 
+     fileTarget.on('change', function(){
+         if(window.FileReader){
+             // 파일명 추출
+             var filename = $(this)[0].files[0].name;
+         } 
+ 
+         else {
+             // Old IE 파일명 추출
+             var filename = $(this).val().split('/').pop().split('\\').pop();
+         };
+ 
+         $(this).siblings('.upload-name').val(filename);
+     });
+ 
+     //preview image 
+     var imgTarget = $('.present-image .upload-hidden');
+ 
+     imgTarget.on('change', function(){
+         var parent = $(this).parent();
+         parent.children('.upload-display').remove();
+ 
+         if(window.FileReader){
+             //image 파일만
+             if (!$(this)[0].files[0].type.match(/image\//)) return;
+             
+             var reader = new FileReader();
+             reader.onload = function(e){
+                 var src = e.target.result;
+                 parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img src="'+src+'" class="upload-thumb"><i class="material-icons">close</i></div></div>');
+                 label.style.display = 'none';
+             }
+             reader.readAsDataURL($(this)[0].files[0]);
+         }
+ 
+         else {
+             $(this)[0].select();
+             $(this)[0].blur();
+             var imgSrc = document.selection.createRange().text;
+             parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img class="upload-thumb"><i class="material-icons">close</i></div></div>');
+             label.style.display = 'none';
+ 
+             var img = $(this).siblings('.upload-display').find('img');
+             img[0].style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\""+imgSrc+"\")";        
+         }
+     });
+ });
+
 let ul = document.querySelector('#present-list');
 
 // 카테고리 값 변경
@@ -110,6 +163,7 @@ function printPresent(cate, pren, pri, ran) {
     range.addEventListener('input', function(ev) {
         const target = ev.target;  
         let brotherTarget = target.nextSibling;
+        let initTemp =  5;
         let temp = brotherTarget.innerHTML;
         brotherTarget.innerHTML = target.value;
         
@@ -120,13 +174,12 @@ function printPresent(cate, pren, pri, ran) {
         // console.log(ele.children[2].children[1].value)
         let targetNum = parseInt(brotherTarget.innerHTML);
         let blankNum = parseInt(blankValue.innerHTML);
-        if (sum > 100) {
-            // setTimeout(function() {
-            //     target.value = temp;
-            //     brotherTarget.innerHTML = temp;
-            // }, 500);     
-            blank.value = max - targetNum;
-            blankValue.innerHTML = blank.value;
+        if (sum > max) {
+            setTimeout(function() {
+                target.value = temp;
+                brotherTarget.innerHTML = temp;
+            }, 500);     
+        
         }
  
 
@@ -134,6 +187,17 @@ function printPresent(cate, pren, pri, ran) {
         // console.log(blankValue.innerHTML);
 
     });
+    // 메인 화면 UI 변경
+    const nonList = document.querySelector('.nonList');
+    const draw_box = document.querySelector('.draw-box');
+
+    if (ul.children.length >= 2)  {
+        nonList.style.display = 'none';
+        draw_box.style.display = 'inline';
+    } else {
+        nonList.style.display = 'inline';
+        draw_box.style.display = 'none';
+    }
 }
 
 
@@ -157,8 +221,6 @@ function createPresent() {
     let mPresentName = document.querySelector('#product-name').value;
     let mPrice = document.querySelector('.price').value;
     let mRange = document.querySelector('.range').value;
-
-    console.log(mRange);
 
     if (presentList.length < 20) {
         printPresent(mCategory, mPresentName ,mPrice, mRange);
@@ -213,4 +275,8 @@ function blankRangeSlider(ev) {
 }
 
 
-
+// 뽑기
+let randomRange = document.querySelector('.range').value;
+function clickRange() {
+    
+}

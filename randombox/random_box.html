@@ -55,12 +55,12 @@
             </buuton>
 
             <!-- 선물 리스트에 선물이 있는 경우 -->
-            <!-- <div class="draw-box">
+            <div class="draw-box">
                 <i class="material-icons">question_mark</i><br>
                 <button class="draw">
                     <p>랜덤 박스 돌리기</p>
                 </button>
-            </div> -->
+            </div>
 
             <!-- 선물을 뽑았을 경우 -->
             <!-- <p class="win-phrase"><span class="win-num">10</span>% 당첨</p> -->
@@ -111,7 +111,10 @@
                 </div>   
                 <div class="present-container">
                     <div class="present-image">
-                        <img src="https://static.megamart.com/product/image/0127/01278279/01278279_1_960.jpg" alt="서울우유">
+                        <input type="hidden" class="upload-name" disabled="disabled"> 
+                        <label for="input_file"><i class="material-icons">add</i></label>
+                        <input type="file" id="input_file" class="upload-hidden">      
+                        <!-- <img src="https://static.megamart.com/product/image/0127/01278279/01278279_1_960.jpg" alt="서울우유"> -->
                     </div>
                     <hr>
                     <div class="present-info">
