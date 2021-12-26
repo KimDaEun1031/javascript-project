@@ -53,3 +53,6 @@ Hex code를 랜덤으로 생성해 배경색을 랜덤으로 바꾸는 프로젝
 
 #### Day 9. Console Tricks!
 > https://github.com/KimDaEun1031/javascript-project/blob/master/JavaScript30/09%20-%20Dev%20Tools%20Domination/index-START.html
+
+#### Day 10. Hold Shift and Check Checkboxes
+> https://kimdaeun1031.github.io/javascript-project/JavaScript30/10%20-%20Hold%20Shift%20and%20Check%20Checkboxes/index-START.html
