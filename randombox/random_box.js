@@ -17,28 +17,32 @@ function closeModal() {
     modal.style.display = 'none';
 }
 
-const label = document.querySelector('label');
-console.log(label)
+let ul = document.querySelector('#present-list');
+
+const label = document.querySelector('.img_label');
+
 // modal 이미지 파일 추가 시 preview
 $(document).ready(function(){
-    var fileTarget = $('.present-image .upload-hidden');
+    var fileTarget = $('.upload-hidden');
  
      fileTarget.on('change', function(){
          if(window.FileReader){
              // 파일명 추출
              var filename = $(this)[0].files[0].name;
+            //  console.log(this)
          } 
  
          else {
              // Old IE 파일명 추출
              var filename = $(this).val().split('/').pop().split('\\').pop();
+            //  console.log(filename)
          };
  
          $(this).siblings('.upload-name').val(filename);
      });
  
      //preview image 
-     var imgTarget = $('.present-image .upload-hidden');
+     var imgTarget = $('.upload-hidden');
  
      imgTarget.on('change', function(){
          var parent = $(this).parent();
@@ -51,8 +55,10 @@ $(document).ready(function(){
              var reader = new FileReader();
              reader.onload = function(e){
                  var src = e.target.result;
-                 parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img src="'+src+'" class="upload-thumb"><i class="material-icons">close</i></div></div>');
+                 parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img src="'+src+'" class="upload-thumb"><label for="input_file" class="pre_label"><i class="material-icons">add</i></label></div></div>');
                  label.style.display = 'none';
+                 document.querySelector('.file-name').value = src;
+                //  console.log(document.querySelector('.file-name').value)
              }
              reader.readAsDataURL($(this)[0].files[0]);
          }
@@ -61,16 +67,79 @@ $(document).ready(function(){
              $(this)[0].select();
              $(this)[0].blur();
              var imgSrc = document.selection.createRange().text;
-             parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img class="upload-thumb"><i class="material-icons">close</i></div></div>');
+             parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img class="upload-thumb"><label for="input_file" class="pre_label"><i class="material-icons">add</i></label></div></div>');
              label.style.display = 'none';
  
              var img = $(this).siblings('.upload-display').find('img');
              img[0].style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\""+imgSrc+"\")";        
-         }
+         }      
      });
- });
+});
 
-let ul = document.querySelector('#present-list');
+// 메인 화면 UI 변경
+const nonList = document.querySelector('.nonList');
+const draw_box = document.querySelector('.draw-box');
+const draws = document.querySelectorAll('.draw');
+
+const loading = document.querySelector('.load-wrapp');
+const present_card = document.querySelector('.present-card');
+const card_front = document.querySelector('.card-front');
+const card_back = document.querySelector('.card-back');
+const noBlank = document.querySelector('.card-front .noBlank');
+const cardBlank = document.querySelector('.card-front .blank');
+
+draws.forEach(draw => draw.addEventListener('click', randomBox))
+
+function randomBox() {
+    draw_box.style.display = 'none';
+    loading.style.display = 'inline';
+    present_card.style.display = 'none';
+    cardBlank.style.display = 'none';
+    noBlank.style.display = 'none'; 
+
+    // 뽑기
+    let random = Math.floor((Math.random() * 101) + 1);
+    let ran = [];
+
+    presentList.filter(pre => ran.push(Object.values(pre)[5]))
+    let randomId = Math.floor((Math.random() * ran.length) + 1);
+    console.log(random)
+    if (1 <= random && random <= 50) {
+        setTimeout(function() {
+            $(".cardRotate").addClass("backRotate").removeClass("cardRotate");
+            loading.style.display = 'none';  
+            cardBlank.style.display = 'none'; 
+            present_card.style.display = 'inline-block';
+            noBlank.style.display = 'inline'
+    
+            const present_image = document.querySelector('.upload-hidden img');
+            const present_name = document.querySelector('.presentCard-name');
+            const present_price = document.querySelector('.presentCard-price');
+    
+            let preId = presentList.filter((pre) => pre.id === randomId);
+            let obj = Object.values(preId["0"]);
+            
+            present_image.src = obj[4];
+            present_name.value = obj[1];
+            present_price.value = obj[2];
+        }, 2000)   
+    } 
+    else {
+        setTimeout(function() {
+            $(".cardRotate").addClass("backRotate").removeClass("cardRotate");
+            loading.style.display = 'none';
+            present_card.style.display = 'inline-block';
+            noBlank.style.display = 'none'; 
+            cardBlank.style.display = 'flex';           
+        }, 2000)   
+    }  
+}
+
+$(".present-card").on('click',function(){
+    $(".cardRotate").addClass("backRotate").removeClass("cardRotate");
+    $(this).addClass("cardRotate").removeClass("backRotate");
+});
+
 
 // 카테고리 값 변경
 let categoryValue = function(value) {
@@ -159,6 +228,7 @@ function printPresent(cate, pren, pri, ran) {
     ul.appendChild(present);
     closeModal();
     closeBtn.addEventListener('click', removePresent);
+
     // 선물 실시간 조정
     range.addEventListener('input', function(ev) {
         const target = ev.target;  
@@ -168,28 +238,21 @@ function printPresent(cate, pren, pri, ran) {
         brotherTarget.innerHTML = target.value;
         
         let children = ul.children;
-        // console.log([...children])
-        let sum = [...children].reduce((acc, cur) => acc + Number(cur.children[2].children[1].value), 0);
-        console.log(sum)
+        // console.log(children[1])
+        // let sum = [...children].reduce((acc, cur) => acc + Number(cur.children[2].children[1].value), 0);
+        // console.log(sum)
         // console.log(ele.children[2].children[1].value)
-        let targetNum = parseInt(brotherTarget.innerHTML);
-        let blankNum = parseInt(blankValue.innerHTML);
-        if (sum > max) {
-            setTimeout(function() {
-                target.value = temp;
-                brotherTarget.innerHTML = temp;
-            }, 500);     
+        // let targetNum = parseInt(brotherTarget.innerHTML);
+        // let blankNum = parseInt(blankValue.innerHTML);
+        // if (sum > max) {
+        //     setTimeout(function() {
+        //         target.value = temp;
+        //         brotherTarget.innerHTML = temp;
+        //     }, 500);     
         
-        }
- 
-
-        // console.log( brotherTarget.innerHTML);
-        // console.log(blankValue.innerHTML);
-
+        // }
+        // const target = ev.target;
     });
-    // 메인 화면 UI 변경
-    const nonList = document.querySelector('.nonList');
-    const draw_box = document.querySelector('.draw-box');
 
     if (ul.children.length >= 2)  {
         nonList.style.display = 'none';
@@ -220,23 +283,25 @@ function createPresent() {
     let mCategory = document.querySelector('#product-category').value;
     let mPresentName = document.querySelector('#product-name').value;
     let mPrice = document.querySelector('.price').value;
-    let mRange = document.querySelector('.range').value;
+    let mRange = document.querySelector('#range').value;
+    let mImg = document.querySelector('.file-name').value;
 
     if (presentList.length < 20) {
         printPresent(mCategory, mPresentName ,mPrice, mRange);
-        savePresent(mCategory, mPresentName ,mPrice, mRange);
+        savePresent(mCategory, mPresentName ,mPrice, mRange, mImg);
     }
 
 }
 
 // 선물 목록 요소 저장
-function savePresent(category, present_name, price, range) {
+function savePresent(category, present_name, price, range, preview) {
     // json 생성
     const presentObj = {
         category : category,
         present_name : present_name,
         price : price,
         range : range,
+        preview : preview,
         id : presentList.length + 1,
     };
     presentList.push(presentObj);
@@ -253,9 +318,9 @@ function loadPresent() {
     if (load_present !== null) {
         const parse = JSON.parse(load_present);
         for (let pre of parse) {
-            const { category, present_name, price, range } = pre;
+            const { category, present_name, price, range, preview } = pre;
             printPresent(category, present_name, price, range);
-            savePresent(category, present_name, price, range);
+            savePresent(category, present_name, price, range, preview);
         }
     }
 }
@@ -272,11 +337,4 @@ function blankRangeSlider(ev) {
     let brotherTarget = target.nextSibling;
     let oneMoreTarget = brotherTarget.nextSibling; 
     oneMoreTarget.innerHTML = target.value;  
-}
-
-
-// 뽑기
-let randomRange = document.querySelector('.range').value;
-function clickRange() {
-    
 }

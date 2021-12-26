@@ -57,32 +57,54 @@
             <!-- 선물 리스트에 선물이 있는 경우 -->
             <div class="draw-box">
                 <i class="material-icons">question_mark</i><br>
-                <button class="draw">
+                <button class="draw" >
                     <p>랜덤 박스 돌리기</p>
                 </button>
             </div>
 
+            <!-- 선물을 뽑는 중 -->
+            <div class="load-wrapp">
+                <p>랜덤 박스 돌리는 중</p>
+                <div class="load-3">
+                  <div class="line"></div>
+                  <div class="line"></div>
+                  <div class="line"></div>                  
+                </div>
+            </div>
+            <div class="clear"></div>
+
             <!-- 선물을 뽑았을 경우 -->
-            <!-- <p class="win-phrase"><span class="win-num">10</span>% 당첨</p> -->
-            <!-- <div class="present-card">            
+            <p class="win-phrase"><span class="win-num">10</span>% 당첨</p> 
+            <div class="present-card">                       
                 <div class="card-front">
-                    <div class="present-image">
-                        <img src="https://static.megamart.com/product/image/0127/01278279/01278279_1_960.jpg" alt="서울우유">
+                    <div class="noBlank">
+                        <div class="upload-hidden">
+                            <img src="" alt="">
+                        </div>
+                        <hr>
+                        <div class="present-info">
+                            <span>상품 명 : <input type="text" class="presentCard-name" value="서울우유 나 100% 2.3L" readonly></span><br>
+                            <span>상품 가격 : <input type="text" class="presentCard-price" value ="6050" readonly> 원</span>
+                        </div>
+                        <hr>
+                        <span class="share">
+                            <i class="material-icons">share</i>
+                        </span>
+                        <button class="draw" >
+                            <p>랜덤 박스 돌리기</p>
+                        </button>
+                    </div>         
+                    <div class="blank"> 
+                        <span>꽝</span> 
+                        <button class="draw" >
+                            <p>랜덤 박스 돌리기</p>
+                        </button>
                     </div>
-                    <hr>
-                    <div class="present-info">
-                        <span>상품 명 : <input type="text" value="서울우유 나 100% 2.3L" readonly></span><br>
-                        <span>상품 가격 : <input type="text" class="price" value ="6050" readonly> 원</span>
-                    </div>
-                    <hr>
-                    <span class="share">
-                        <i class="material-icons">share</i>
-                    </span>
                 </div>
                 <div class="card-back">
                     카드를 뒤집어주세요.
-                </div>
-            </div> -->
+                </div>                
+            </div>    
         </div>
     </section>
 
@@ -112,13 +134,15 @@
                 <div class="present-container">
                     <div class="present-image">
                         <input type="hidden" class="upload-name" disabled="disabled"> 
-                        <label for="input_file"><i class="material-icons">add</i></label>
+                        <input type="hidden" class="file-name" disabled="disabled"> 
+                        <label for="input_file" class="img_label"><i class="material-icons">add</i></label>
                         <input type="file" id="input_file" class="upload-hidden">      
                         <!-- <img src="https://static.megamart.com/product/image/0127/01278279/01278279_1_960.jpg" alt="서울우유"> -->
                     </div>
                     <hr>
                     <div class="present-info">
                         <input type="hidden" id="product-category" >
+                        <input type="range" id="range" value="5" style="display: none;">
                         <span>상품 명 : <input type="text" id="product-name" placeholder="  서울우유 나 100% 2.3L"></span>
                         <span>상품 가격 : <input type="text" class="price" placeholder="  6050"> 원</span>
                     </div>

@@ -290,6 +290,7 @@ section {
 /* 선물 리스트에 아무것도 없을 경우 */
 
 .random-box .nonList {
+  /* display: none; */
   width: 500px;
   height: 200px;
   text-align: center;
@@ -322,7 +323,7 @@ section {
   display: none;
 }
 
-.random-box .draw-box .draw {
+.draw {
   width: 300px;
   height: 100px;
   text-align: center;
@@ -342,11 +343,74 @@ section {
   margin-bottom: 150px;
 }
 
-.random-box .draw-box .draw p {
+.draw p {
   font-size: 40px;
   font-family: 'cookieRunBold';
   color: rgb(194, 124, 34);
 }
+
+/* 선물 뽑는 중 애니메이션 */
+.clear {
+  clear: both;
+}
+
+.load-wrapp {
+  float: left;
+  width: 500px;
+  height: 100px;
+  margin: -160px 10px 10px 0;
+  padding: 20px 20px 20px;
+  border-radius: 5px;
+  text-align: center;
+  display: none;
+}
+
+.load-wrapp p {
+  font-size: 45px;
+  font-family: 'cookieRunBold';
+  margin-bottom: 30px;
+  color: rgb(194, 124, 34);
+}
+
+.load-wrapp:last-child {
+  margin-right: 0;
+}
+
+.line {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  margin: 10px;
+  border-radius: 50%;
+}
+
+
+.load-3 .line:nth-last-child(1) {
+  animation: loadingC 0.6s 0.1s linear infinite;
+  background-color: rgb(245, 99, 99);
+}
+.load-3 .line:nth-last-child(2) {
+  animation: loadingC 0.6s 0.2s linear infinite;
+  background-color: rgb(15, 119, 110);
+}
+.load-3 .line:nth-last-child(3) {
+  animation: loadingC 0.6s 0.3s linear infinite;
+  background-color: rgb(245, 99, 99);
+}
+
+
+@keyframes loadingC {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, 15px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
 
 /* 추첨한 선물 */
 .random-box .win-phrase {
@@ -357,14 +421,17 @@ section {
   border: 3px rgb(243, 207, 3);
   border-style: none solid none solid;
   border-radius: 5px;
+  display: none;
 }
 
 /* 당첨 확률에 따른 색 변경 */
 /* 꽝 */
+
 .random-box .win-phrase .win-num {
   color: black;
 }
 
+/* card */
 .random-box .present-card {
   background-color: rgb(255, 202, 87);
   width: 500px;
@@ -372,17 +439,26 @@ section {
   border-radius: 10px;
   border: 5px inset rgb(14, 66, 62);
   box-shadow: 2px 3px 4px rgb(138, 138, 138);
+  display: none;
+  position: relative;
 }
 
 .random-box .present-card .card-back {
   text-align: center;
-  margin-top: 60%;
+  margin-top: 54%;
+  margin-left: 40px;
   font-size: 50px;
   font-family: 'cookieRunBold';
   color: rgb(87, 54, 11);
+  position: absolute;
 }
 
-.random-box .present-card .card-front .present-image {
+.random-box .present-card .card-front {
+  position: absolute;
+  transform:rotateY(90deg);
+}
+
+.random-box .present-card .card-front .upload-hidden {
   width: 300px;
   height: 300px;
   border: 5px solid rgb(182, 161, 131);
@@ -392,7 +468,7 @@ section {
   margin-bottom: 20px;
 }
 
-.random-box .present-card .card-front .present-image img {
+.random-box .present-card .card-front .upload-hidden img {
   height: 300px;
   width: 300px;
   border-radius: 5px;
@@ -426,7 +502,7 @@ section {
   font-family: 'cookieRunBold';
 }
 
-.random-box .present-card .card-front .present-info span .price {
+.random-box .present-card .card-front .present-info span .presentCard-price {
   width: 13%;
 }
 
@@ -446,10 +522,59 @@ section {
   box-shadow: 1px 3px 4px rgba(63, 63, 63, 0.836);
 
 }
+
+.random-box .present-card .card-front .blank {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 200px;
+}
+.random-box .present-card .card-front .blank span {
+  margin-left: 100px;
+  font-family: 'cookieRunBold';
+  font-size: 95px;
+  color: rgb(36, 36, 36);
+}
+
+.random-box .present-card .card-front .draw{
+  margin-top: 50px;
+  margin-left: 100px;
+}
+/* 카드 뒤집기 애니메이션 */
+.cardRotate .card-back {
+  opacity:1;
+  animation: rotateAni 0.5s 1;
+  transform: rotateY(90deg);
+}
+
+.cardRotate .card-front {
+  opacity:1;
+  animation: rotateAni2 0.5s 0.5s 1 backwards; 
+  transform: rotateY(0deg) !important;
+}
+
+@keyframes rotateAni{
+  0% {
+    transform:rotateY(0deg);
+  }
+  100% {
+    transform:rotateY(90deg);
+  }
+}
+@keyframes rotateAni2{
+  0% {
+    transform:rotateY(-90deg);
+  }
+  100% {
+    transform:rotateY(0deg);
+  }
+}
+
 /* modal */
 
 .modal {
-  /* display: none; */
+  display: none;
 }
 
 .modal-body {
@@ -569,7 +694,7 @@ section {
   border-radius: 4px;
 } */
 
-.present-container .present-image label{
+.present-container .present-image .img_label{
   position: relative;
   display : inline-block; 
   padding : .5em .75em; 
@@ -583,7 +708,7 @@ section {
   border-radius: 4px;
 }
 
-.present-container .present-image label i {
+.present-container .present-image .img_label i {
   position: absolute;
   left: 118px;
   top: 110px;
@@ -689,7 +814,7 @@ section {
 	vertical-align: middle;
 	border: 1px solid #ddd;
 	border-radius: 5px;
-	background-color: blanchedalmond;
+	background-color: rgb(255, 255, 255);
   position: relative;
 }
 
