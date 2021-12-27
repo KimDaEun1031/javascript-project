@@ -57,3 +57,6 @@ Hex code를 랜덤으로 생성해 배경색을 랜덤으로 바꾸는 프로젝
 
 #### Day 10. Hold Shift and Check Checkboxes
 > https://kimdaeun1031.github.io/javascript-project/JavaScript30/10%20-%20Hold%20Shift%20and%20Check%20Checkboxes/index-START.html
+
+#### Day 11. Custom Video Player
+> https://kimdaeun1031.github.io/javascript-project/JavaScript30/11%20-%20Custom%20Video%20Player/index.html
