@@ -16,16 +16,16 @@ Hex code를 랜덤으로 생성해 배경색을 랜덤으로 바꾸는 프로젝
 랜덤으로 나오는 3자릿수를 10번 안에 맞추는 게임
 > https://kimdaeun1031.github.io/javascript-project/baseball/index.html
 
-## 6. Calendar
+## 5. Calendar
 달력
 > https://kimdaeun1031.github.io/javascript-project/calendar/calendar.html
 
-## 5. Random Box (1차 완료)
+## 6. Random Box (1차 완료)
 등록한 선물들을 랜덤확률로 얻을 수 있는 
 > https://kimdaeun1031.github.io/javascript-project/randombox/random_box.html
 
 
-## 5. Javascript30 (제작 중)
+## 7. Javascript30 (제작 중)
 30일치 자바스크립트 프로젝트
 
 #### Day 1. Drum Kit
