@@ -60,3 +60,6 @@ Hex code를 랜덤으로 생성해 배경색을 랜덤으로 바꾸는 프로젝
 
 #### Day 11. Custom Video Player
 > https://kimdaeun1031.github.io/javascript-project/JavaScript30/11%20-%20Custom%20Video%20Player/index.html
+
+#### Day 12. Key Detection
+> https://kimdaeun1031.github.io/javascript-project/JavaScript30/12%20-%20Key%20Sequence%20Detection/index-START.html
