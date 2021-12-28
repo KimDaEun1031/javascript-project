@@ -7,6 +7,22 @@
 </head>
 <body>
 <script>
+  let arr = [];
+  let secretCode = "abcd";
+
+  window.addEventListener('keydown', function(e) {
+    console.log(e.key)
+    arr.push(e.key);
+    console.log(arr)
+    if (arr.length > 0) {
+      let joinCode = arr.join('');
+
+      if (joinCode === secretCode) {
+        console.log('find secretCode!')
+        cornify_add();
+      }
+    }
+  })
 </script>
 </body>
 </html>
