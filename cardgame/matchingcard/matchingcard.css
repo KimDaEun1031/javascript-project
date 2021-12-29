@@ -60,12 +60,12 @@ a:hover {
 
 @font-face {
     font-family: 'cookieRun';
-    src: url('../font/CookieRun\ Regular.ttf') format('truetype');
+    src: url('/font/CookieRun\ Regular.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'cookieRunBold';
-    src: url('../font/CookieRun\ Bold.ttf') format('truetype');
+    src: url('/font/CookieRun\ Bold.ttf') format('truetype');
 }
 
 body {
@@ -78,7 +78,7 @@ body {
 }
 
 .board-menu {
-    background-color: rgb(109, 87, 58);
+    background-color: rgba(109, 87, 58, 0.767);
     width: 800px;
     height: 90px;
     border-radius: 10px 10px 0 0;
@@ -88,10 +88,22 @@ body {
 }
 
 .board {
-    background-color: rgb(255, 237, 211);
+    background-color: rgb(47, 64, 90);
     width: 800px;
     height: 1000px;
     border-radius: 0 0 10px 10px;
+    border-width: 5px;
+    border-style: solid none none none;
+    border-color: rgba(104, 104, 104, 0.39);
+    display: flex;
+}
+
+.board .board-border {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 100px;
 }
 
 .board-menu .time {
@@ -100,19 +112,91 @@ body {
     height: 60px;
     border-radius: 50%;
     border: solid 3px rgb(255, 255, 255);
-    margin-top: 5px;
-    margin-left: 5px;
+    margin-left: 10px;
     box-shadow: inset 0 0 5px gray;
 }
 
 .board-menu .time .second {
     text-align: center;
-    margin-top: 7px;
+    margin-top: 10px;
     font-size: 40px;
     color: rgb(36, 36, 36);
-    font-family: 'cookieRunBold';
+    font-family: 'Luckiest Guy', cursive;
 }
 
-.board-menu .time .round {
-    
+.board-menu .round {
+    font-size: 50px;
+    color: rgb(36, 36, 36);
+    font-family: 'Luckiest Guy', cursive;
+    font-weight: bold;
+    letter-spacing: 6px;
+}
+
+.board-menu .pause i {
+    margin-right: 10px;
+    font-size: 50px;
+    color: rgb(36, 36, 36);
+}
+
+.board .game-start .difficulty {
+  margin-left: 70px;
+  margin-top: 300px;
+}
+
+.board .game-start .difficulty p {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 40px;
+  font-family: 'cookieRunBold';
+  color: rgb(255, 255, 255);
+}
+
+
+.board .game-start .difficulty div {
+  background-clip: padding-box;
+  background-color: rgba(49, 38, 15, 0.795);
+  margin: 10px;
+  width: 230px;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 7px double rgba(49, 38, 15, 0.795);
+  border-radius: 10px;
+  font-family: 'cookieRunBold';
+  font-size: 30px;
+  color: rgba(255, 255, 255, 0.918);
+  cursor: pointer;
+}
+
+.card {
+    width: 160px;
+    height: 220px;
+    background-color: blanchedalmond;
+    margin: 60px;
+    border-radius: 14px;
+    border: 5px solid rgb(160, 139, 107);
+    box-shadow: 0 0 0 3px #000 inset; 
+    position: relative;
+}
+
+.card .card-front {
+    width: 160px;
+    height: 220px;
+    border-radius: 10px;
+    position: absolute;
+    transform: rotateY('90deg');
+}
+
+.card .card-front img {
+    width: 160px;
+    height: 220px;
+    border-radius: 8px;   
+}
+
+.card .card-back {
+    width: 160px;
+    height: 220px;
+    background-color: blanchedalmond;
+    border-radius: 8px;
+    /* position: absolute; */
 }
