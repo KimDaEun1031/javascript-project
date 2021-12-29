@@ -21,11 +21,14 @@ Hex code를 랜덤으로 생성해 배경색을 랜덤으로 바꾸는 프로젝
 > https://kimdaeun1031.github.io/javascript-project/calendar/calendar.html
 
 ## 6. Random Box (1차 완료)
-등록한 선물들을 랜덤확률로 얻을 수 있는 
+등록한 선물들을 랜덤확률로 얻을 수 있는 프로젝트
 > https://kimdaeun1031.github.io/javascript-project/randombox/random_box.html
 
+## 7. Card Game (제작 중)
+카드 짝 맞추기, 솔리테어(프리셀, 클론다이크, 피라미드, 스파이더) 등의 카드 게임을 할 수 있는 프로젝트
+> 
 
-## 7. Javascript30 (제작 중)
+## 8. Javascript30 (제작 중)
 30일치 자바스크립트 프로젝트
 
 #### Day 1. Drum Kit
