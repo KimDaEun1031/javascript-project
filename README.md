@@ -66,3 +66,6 @@ Hex code를 랜덤으로 생성해 배경색을 랜덤으로 바꾸는 프로젝
 
 #### Day 12. Key Detection
 > https://kimdaeun1031.github.io/javascript-project/JavaScript30/12%20-%20Key%20Sequence%20Detection/index-START.html
+
+#### Day 13. Slide in on Scroll
+> https://kimdaeun1031.github.io/javascript-project/JavaScript30/13%20-%20Slide%20in%20on%20Scroll/index-START.html
