@@ -43,20 +43,41 @@
   </div>
 
   <script>
-    function debounce(func, wait = 20, immediate = true) {
-      var timeout;
-      return function() {
-        var context = this, args = arguments;
-        var later = function() {
-          timeout = null;
-          if (!immediate) func.apply(context, args);
-        };
-        var callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow) func.apply(context, args);
-      };
+function debounce(func, wait = 20, immediate = true) {
+  var timeout;
+  return function() {
+    var context = this, args = arguments;
+    var later = function() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+}
+
+const images = document.querySelectorAll('img');
+
+function checkSlide() {
+  images.forEach(item => {
+    // 스크롤 값 + 윈도우 높이 - 이미지 높이 / 2
+    let slidePosition = (window.scrollY + window.innerHeight) - item.height / 2;
+
+    // 이미지 절대좌표 구하기 = offsetTop은 컨텐츠의 시작 지점(절대위치의 값 리턴)
+    let imgPosition = item.offsetTop + item.height;
+    
+    if (slidePosition > imgPosition && window.scrollY < imgPosition) {
+      item.classList.add('active');
+    } else {
+      item.classList.remove('active');
     }
+  });
+}
+
+window.addEventListener('scroll', debounce(checkSlide));
+    
 
   </script>
 
