@@ -101,8 +101,8 @@ body {
 .board .board-border {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center; */
+    align-content: center;
     padding: 100px;
 }
 
@@ -136,6 +136,7 @@ body {
     margin-right: 10px;
     font-size: 50px;
     color: rgb(36, 36, 36);
+    cursor: pointer;
 }
 
 .board .game-start .difficulty {
@@ -177,6 +178,7 @@ body {
     border: 5px solid rgb(160, 139, 107);
     box-shadow: 0 0 0 3px #000 inset; 
     position: relative;
+    cursor: pointer;
 }
 
 .card .card-front {
@@ -198,5 +200,5 @@ body {
     height: 220px;
     background-color: blanchedalmond;
     border-radius: 8px;
-    /* position: absolute; */
+    position: absolute;
 }
