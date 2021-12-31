@@ -69,3 +69,6 @@ Hex code를 랜덤으로 생성해 배경색을 랜덤으로 바꾸는 프로젝
 
 #### Day 13. Slide in on Scroll
 > https://kimdaeun1031.github.io/javascript-project/JavaScript30/13%20-%20Slide%20in%20on%20Scroll/index-START.html
+
+#### Day 14. JS Reference VS Copy
+> https://github.com/KimDaEun1031/javascript-project/blob/master/JavaScript30/14%20-%20JavaScript%20References%20VS%20Copying/index-START.html
