@@ -79,6 +79,7 @@ console.log(person, captain)
 
 // how do we take a copy instead?
 // Object.assign 메소드를 사용하면 복사를 하더라도 원본 배열은 변경되지 않는다.
+// 복사와 동시에 추가까지 가능하다.
 const cap2 = Object.assign({}, person, { number: 99, age: 12 });
 console.log(person, cap2);
 
@@ -90,7 +91,7 @@ cap3.age = 30;
 console.log(person, cap3);
 
 // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
-// 주의 사항 - 배열과 객체 모드 깊이 1단계 밖에 되지 않는다.
+// 주의 사항 - Object.assign 메소드는 오직 한 레벨만 복사한다.
 // lodash 라이브러리의 cloneDeep 메소드가 있지만, 사용하기 전에 다시 생각하고 써보기.
 // lodash 라이브러리는 배열 안의 객체들의 값을 핸들링 할 때 유용한 라이브러리다.
 const wes = {
@@ -105,9 +106,17 @@ const wes = {
 console.clear();
 console.log(wes);
 
-const dev = Object.assign({}, wes); // 값 복사
+// Object.assign 메소드는 오직 한 레벨만 복사한다.
+// name과 age의 값은 복사가 되기때문에 wes의 값은 변경되지 않는다.
+// 하지만 social의 값은 복사가 되지 않기때문에 wes의 social 값은 변경된다.
+const dev = Object.assign({}, wes); 
+// dev.social.facebook = 'change';
+console.log(wes, dev);
 
-const dev2 = JSON.parse(JSON.stringify(wes)); // 값 복사
+// JSON.parse를 사용하면 한 레벨 이상을 복사할 수 있지만 추천하지 않는다.
+const dev2 = JSON.parse(JSON.stringify(wes)); 
+dev2.social.facebook = 'change';
+console.log(wes, dev2)
 
   </script>
 
