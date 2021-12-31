@@ -7,48 +7,107 @@
 <body>
 
   <script>
-    // start with strings, numbers and booleans
+// 참조 복사(Shallow Copy, 얕은 복사) VS 값 복사(Deep Copy, 깊은 복사)
+// start with strings, numbers and booleans
 
-    // Let's say we have an array
-    const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+// Let's say we have an array 
+// 배열을 가지고 있다고 하자.
+const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 
-    // and we want to make a copy of it.
+// and we want to make a copy of it.
+// 위의 배열을 복사한다.
+const arr = players;
 
-    // You might think we can just do something like this:
+console.log(players, arr)
+// You might think we can just do something like this:
+// 복사한 배열의 값을 바꾸기
+arr[3] = 'Lux';
 
-    // however what happens when we update that array?
+console.log(players, arr);
 
-    // now here is the problem!
+// however what happens when we update that array?
+// now here is the problem!
+// oh no - we have edited the original array too!
+// 위에서 arr 배열의 3번째 인덱스를 변경을 했지만 원본 배열까지 변경되었다.
 
-    // oh no - we have edited the original array too!
+// Why? It's because that is an array reference, not an array copy. They both point to the same array!
+// 그 이유는 배열 복사가 아닌 배열 참조이기 때문에 arr과 players 둘 다 같은 배열을 가리킨다. 
 
-    // Why? It's because that is an array reference, not an array copy. They both point to the same array!
+// So, how do we fix this? We take a copy instead! 
+// 위의 문제를 해결하는 방법
+// one way
+// 1. slice 메소드 사용
+// slice 메소드는 추출한 요소를 포함한 새로운 배열을 반환한다.
+// 값을 지정하지 않는다면 처음부터 끝까지 추출한 새 배열을 반환한다.
+const arr2 = players.slice();
 
-    // So, how do we fix this? We take a copy instead!
+// or create a new array and concat the old one in
+// 2. concat 메소드 사용
+// 빈 배열 안에 원본 배열을 이어붙인다.
+// concat 메소드는 배열과 배열을 이어붙여서 새로운 배열을 반환한다.
+const arr3 = [].concat(players);
 
-    // one way
+// or use the new ES6 Spread
+// 3. 전개구문(...) 연산자 사용
+// 전개구문을 사용하면 slice와 유사한 형태로 배열이 복사된다.
+const arr4 = [...players];
+arr4[3] = 'test'
+console.log(players, arr4)
 
-    // or create a new array and concat the old one in
+// 4. form 메소드 사용
+// form 메소드는 배열로 변환하고자 하는 유사배열객체나 반복 가능한 객체를 새 배열로 반환한다.
+const arr5 = Array.from(players);
 
-    // or use the new ES6 Spread
+// now when we update it, the original one isn't changed
+// 배열을 복사해 복사한 배열 값을 바꾸더라도 원본 배열의 값은 변경되지 않는다.
 
-    // now when we update it, the original one isn't changed
+// The same thing goes for objects, let's say we have a person object
+// 객체도 마찬가지로, person 객체가 있다고 하자.
 
-    // The same thing goes for objects, let's say we have a person object
+// with Objects
+const person = {
+  name: 'Wes Bos',
+  age: 80
+};
 
-    // with Objects
-    const person = {
-      name: 'Wes Bos',
-      age: 80
-    };
+// and think we make a copy:
+// 위의 객체 배열을 복사한 후 number를 추가한다.
+const captain = person;
+captain.number = 99;
 
-    // and think we make a copy:
+console.log(person, captain)
 
-    // how do we take a copy instead?
+// how do we take a copy instead?
+// Object.assign 메소드를 사용하면 복사를 하더라도 원본 배열은 변경되지 않는다.
+const cap2 = Object.assign({}, person, { number: 99, age: 12 });
+console.log(person, cap2);
 
-    // We will hopefully soon see the object ...spread
+// We will hopefully soon see the object ...spread
+// 전개구문을 사용해도 마찬가지로 원본 배열이 변경되지 않는다.
+const cap3 = {...person}
+cap3.age = 30;
 
-    // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+console.log(person, cap3);
+
+// Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+// 주의 사항 - 배열과 객체 모드 깊이 1단계 밖에 되지 않는다.
+// lodash 라이브러리의 cloneDeep 메소드가 있지만, 사용하기 전에 다시 생각하고 써보기.
+// lodash 라이브러리는 배열 안의 객체들의 값을 핸들링 할 때 유용한 라이브러리다.
+const wes = {
+  name: 'Wes',
+  age: 100,
+  social: {
+    twitter: '@wesbos',
+    facebook: 'wesbos.developer'
+  }
+};
+
+console.clear();
+console.log(wes);
+
+const dev = Object.assign({}, wes); // 값 복사
+
+const dev2 = JSON.parse(JSON.stringify(wes)); // 값 복사
 
   </script>
 
