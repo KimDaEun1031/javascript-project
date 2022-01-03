@@ -72,3 +72,6 @@ Hex code를 랜덤으로 생성해 배경색을 랜덤으로 바꾸는 프로젝
 
 #### Day 14. JS Reference VS Copy
 > https://github.com/KimDaEun1031/javascript-project/blob/master/JavaScript30/14%20-%20JavaScript%20References%20VS%20Copying/index-START.html
+
+#### Day 15. LocalStorage
+> https://kimdaeun1031.github.io/javascript-project/JavaScript30/15%20-%20LocalStorage/index-START.html
