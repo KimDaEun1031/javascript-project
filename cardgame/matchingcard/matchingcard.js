@@ -15,6 +15,9 @@ level.forEach(item => {
             for (let i = 0; i < 4; i++) {
                 createCard();             
             }
+            console.log(board);
+            console.log(list);   
+
             resetTime = setInterval(timer, 1000);
             changeCss();
         }
@@ -23,6 +26,7 @@ level.forEach(item => {
             for (let i = 0; i < 6; i++) {
                 createCard();
             }
+            console.log(list);   
             resetTime = setInterval(timer, 1000);
             changeCss();
         }
@@ -31,6 +35,7 @@ level.forEach(item => {
             for (let i = 0; i < 8; i++) {
                 createCard();
             }
+            console.log(list);   
             resetTime = setInterval(timer, 1000);
             changeCss();
         }
@@ -38,6 +43,7 @@ level.forEach(item => {
     
 });
 
+let clickCard = [];
 
 function createCard() {
     const card = document.createElement('div');
@@ -49,7 +55,12 @@ function createCard() {
     card.classList.add('card');
     card_front.classList.add('card-front');
     card_back.classList.add('card-back');
-    card.id = list.length + 1;
+    if (list.length % 2 === 0) {
+        card.id = list.length + 1;
+    } else {
+        card.id = list.length;
+    }
+    
 
     // 속성 추가
     img.setAttribute('src', './image/card-front-img01.jpg');
@@ -62,14 +73,34 @@ function createCard() {
 
     board.appendChild(card);
     game_start.style.display = 'none';
+    list.push(card.id);
+
+    card.addEventListener('click', function() {
+        console.log(card);
+        card.classList.add('cardRotate');
+        card.classList.remove('backRotate');
+        clickCard.push(card.id);
+        checkSameCard(card);
+        console.log(clickCard)      
+    })
+   
+}
+
+function checkSameCard(card) {
+    if (clickCard[0] !== clickCard[1] && clickCard.length === 2) {
+        card.classList.add('backRotate');
+        card.classList.remove('cardRotate');
+        console.log(clickCard);
+        clickCard.splice(0, clickCard.length);
+    }
+    console.log(clickCard);
 }
 
 const time = document.querySelector('.second');
 let second = Number(time.innerHTML);  
 let resetTime = null;
 
-function timer() { 
-    console.log(second)   
+function timer() {  
     if (second > 0) {
         second -= 1;
         time.innerHTML = second;
@@ -90,8 +121,8 @@ function init() {
 }
 
 function changeCss() {
-    const card = document.querySelectorAll('.card');
-    console.log(card.length)
+     let card = document.querySelectorAll('.card');
+
     if (card.length === 4) {
         card.forEach(cardItem => {
             cardItem.style.margin = '60px';
@@ -117,3 +148,4 @@ function changeCss() {
 // 게임 끝내기 버튼 (임시)
 const reset = document.querySelector('.pause');
 reset.addEventListener('click', init);
+

@@ -202,3 +202,48 @@ body {
     border-radius: 8px;
     position: absolute;
 }
+
+/* 카드 뒤집기 애니메이션 */
+.cardRotate .card-back {
+  opacity:1;
+  animation: rotateAni 0.5s 1;
+  transform: rotateY(90deg);
+}
+
+.cardRotate .card-front {
+  opacity:1;
+  animation: rotateAni2 0.5s 0.5s 1 backwards; 
+  transform: rotateY(0deg) !important;
+}
+
+.backRotate .card-back{
+  animation: backAni 0.5s 1; 
+  opacity:1;
+}
+
+.backRotate .card-front {
+  opacity:0;
+}
+
+
+@keyframes rotateAni{
+  0% {
+    transform:rotateY(0deg);
+  }
+  100% {
+    transform:rotateY(90deg);
+  }
+}
+@keyframes rotateAni2{
+  0% {
+    transform:rotateY(-90deg);
+  }
+  100% {
+    transform:rotateY(0deg);
+  }
+}
+
+@keyframes backAni{
+  0%{transform:rotateY(90deg);}
+  100%{transform:rotateY(0deg);}
+}
