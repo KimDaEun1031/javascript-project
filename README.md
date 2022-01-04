@@ -75,3 +75,6 @@ Hex code를 랜덤으로 생성해 배경색을 랜덤으로 바꾸는 프로젝
 
 #### Day 15. LocalStorage
 > https://kimdaeun1031.github.io/javascript-project/JavaScript30/15%20-%20LocalStorage/index-START.html
+
+#### Day 16. Mouse Move Shadow
+> https://kimdaeun1031.github.io/javascript-project/JavaScript30/16%20-%20Mouse%20Move%20Shadow/index-START.html
