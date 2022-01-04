@@ -13,7 +13,7 @@ level.forEach(item => {
         console.log(difficultyName);
         if (difficultyName === 'easy') {
             for (let i = 0; i < 4; i++) {
-                createCard();             
+                createCard();                        
             }
             console.log(board);
             console.log(list);   
@@ -61,10 +61,24 @@ function createCard() {
         card.id = list.length;
     }
     
-
     // 속성 추가
-    img.setAttribute('src', './image/card-front-img01.jpg');
-    img.setAttribute('alt', '카드');
+    if (card.id == 1) {
+        img.setAttribute('src', './image/card-front-img01.jpg');
+        img.setAttribute('alt', '카드');
+    } else if (card.id == 3) {
+        img.setAttribute('src', './image/card-front-img02.jpg');
+        img.setAttribute('alt', '카드');
+    } else if (card.id == 5) {
+        img.setAttribute('src', './image/card-front-img03.jpg');
+        img.setAttribute('alt', '카드');
+    } else if (card.id == 7) {
+        img.setAttribute('src', './image/card-front-img04.jpg');
+        img.setAttribute('alt', '카드');
+    } else if (card.id == 9) {
+        img.setAttribute('src', './image/card-front-img05.jpg');
+        img.setAttribute('alt', '카드');
+    }
+    
 
     // 부자 정렬
     card.appendChild(card_front);
@@ -76,25 +90,38 @@ function createCard() {
     list.push(card.id);
 
     card.addEventListener('click', function() {
-        console.log(card);
         card.classList.add('cardRotate');
-        card.classList.remove('backRotate');
-        clickCard.push(card.id);
-        checkSameCard(card);
-        console.log(clickCard)      
+        card.classList.remove('backRotate');       
+        setTimeout(checkSameCard, 2000);
+        console.log(board)      
     })
-   
+
 }
 
-function checkSameCard(card) {
-    if (clickCard[0] !== clickCard[1] && clickCard.length === 2) {
-        card.classList.add('backRotate');
-        card.classList.remove('cardRotate');
-        console.log(clickCard);
-        clickCard.splice(0, clickCard.length);
+function checkSameCard() {
+    let cards = document.querySelectorAll('.cardRotate');
+
+    // 카드 짝이 안 맞는 경우
+    if (cards[0].id !== cards[1].id && cards.length === 2) { 
+        cards.forEach(function(card) {
+            card.classList.remove('cardRotate');
+            card.classList.add('backRotate');
+        });  
+        second -= 4;
+    } else {
+        // 카드 짝이 맞는 경우
+        cards.forEach(card => {
+            card.style.visibility = 'hidden';
+            card.classList.remove('cardRotate');
+            card.classList.add('backRotate');
+            list.pop(card.id);
+        });
+        second += 3
     }
-    console.log(clickCard);
+
+    console.log(list)
 }
+
 
 const time = document.querySelector('.second');
 let second = Number(time.innerHTML);  
@@ -115,6 +142,7 @@ function init() {
     while (board.hasChildNodes()) {
         board.removeChild(board.firstChild);
     }
+    list = [];
     game_start.style.display = 'inline';
     board.style.padding = '100px'
     clearInterval(resetTime)
