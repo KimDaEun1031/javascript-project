@@ -48,6 +48,24 @@
 <script>
 const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
 
+// 배열 bands에서 관사 a, the, an을 삭제하고자 함
+function checkReg(bandName) {
+  return bandName.replace(/^(a |the |an )/i, "");
+}
+// const arr = bands.map(arr => arr.replace(/^(a |the |an )/i, ""));
+
+const arr = bands.sort((a, b) => checkReg(a) > checkReg(b) ? 1 : -1);
+
+const ul = document.querySelector('#bands');
+
+function createLi(item) {
+  let li = document.createElement("li");
+  li.innerHTML = item;
+  ul.append(li);
+}
+
+arr.forEach(item => createLi(item));
+
 
 </script>
 
