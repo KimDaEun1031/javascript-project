@@ -4,17 +4,20 @@ const board = document.querySelector('.board-border');
 const game_start = document.querySelector('.game-start');
 const difficulty = document.querySelector('.difficulty');
 const level = document.querySelectorAll('.level');
+const info = document.querySelector('.score i');
 
 console.log(difficulty)
 level.forEach(item => {
     let difficultyName = item.className.slice(6, item.length);
-    console.log(item)
+
     item.addEventListener('click', function(e) {
+        info.style.display = 'none';
         console.log(difficultyName);
         if (difficultyName === 'easy') {
             for (let i = 0; i < 4; i++) {
                 createCard();                        
             }
+            random();
             console.log(board);
             console.log(list);   
 
@@ -26,7 +29,7 @@ level.forEach(item => {
             for (let i = 0; i < 6; i++) {
                 createCard();
             }
-            console.log(list);   
+            random();
             resetTime = setInterval(timer, 1000);
             changeCss();
         }
@@ -35,7 +38,7 @@ level.forEach(item => {
             for (let i = 0; i < 8; i++) {
                 createCard();
             }
-            console.log(list);   
+            random();
             resetTime = setInterval(timer, 1000);
             changeCss();
         }
@@ -99,7 +102,7 @@ function createCard() {
 }
 
 function checkSameCard() {
-    let cards = document.querySelectorAll('.cardRotate');
+    const cards = document.querySelectorAll('.cardRotate');
 
     // 카드 짝이 안 맞는 경우
     if (cards[0].id !== cards[1].id && cards.length === 2) { 
@@ -120,6 +123,21 @@ function checkSameCard() {
     }
 
     console.log(list)
+}
+
+// 랜덤 배치
+function random() {
+    const cards = document.querySelectorAll('.card');
+    let arr = Array.prototype.slice.call(cards, 0);
+
+    arr.sort(() => Math.random() - 0.5);
+
+    while (board.hasChildNodes()) {
+        board.removeChild(board.firstChild);
+    }
+
+    arr.forEach(card => board.appendChild(card));
+    console.log(board)
 }
 
 
@@ -144,7 +162,8 @@ function init() {
     }
     list = [];
     game_start.style.display = 'inline';
-    board.style.padding = '100px'
+    info.style.display = 'block';
+    board.style.padding = '80px'
     clearInterval(resetTime)
 }
 

@@ -103,7 +103,7 @@ body {
     flex-wrap: wrap;
     /* justify-content: center; */
     align-content: center;
-    padding: 100px;
+    padding: 80px;
 }
 
 .board-menu .time {
@@ -138,6 +138,16 @@ body {
     color: rgb(36, 36, 36);
     cursor: pointer;
 }
+
+/* score */
+.board .score i {
+
+  margin: 10px;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+
+/* difficulty */
 
 .board .game-start .difficulty {
   margin-left: 70px;
@@ -246,4 +256,126 @@ body {
 @keyframes backAni{
   0%{transform:rotateY(90deg);}
   100%{transform:rotateY(0deg);}
+}
+
+/* modal */
+.modal {
+  /* display: none; */
+}
+
+.modal-body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(36, 36, 36, 0.4);
+}
+
+.modal-container {
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  width: 640px;
+  height: 600px;
+  top: 20%;
+  border: 5px solid rgb(34, 34, 34);
+  border-radius: 10px;
+  box-shadow: 1px 2px 4px rgb(56, 56, 56);
+}
+
+.modal-title button {
+  outline: none;
+  border: none;
+  background-color: rgba(223, 223, 223, 0);
+}
+
+.modal-title button i {
+  font-size: 40px;
+  margin-top: -15px;
+  padding-bottom: 10px;
+  color: rgb(34, 34, 34);
+}
+
+.modal-content p {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 50px;
+  font-family: 'Luckiest Guy', cursive;
+  color: rgb(36, 36, 36);
+}
+
+.modal-content hr {
+  margin: 0 200px 10px 200px;
+  border: solid 2px rgba(36, 36, 36, 0.123);
+  border-radius: 10px;
+}
+
+.modal-content .level-score {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.modal-content .level-score div {
+  width: 200px;
+  height: 220px;
+  background-color: antiquewhite;
+  margin: 8px;
+  border-radius: 5px;
+  box-shadow: 0 0 4px rgb(219, 198, 169);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modal-content .level-score div .title {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 40px;
+  font-family: 'Luckiest Guy', cursive;
+  color: rgb(36, 36, 36);
+}
+
+.modal-content .level-score div p {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-size: 30px;
+  font-family: 'Luckiest Guy', cursive;
+  color: rgb(36, 36, 36);
+}
+
+.modal-content .level-score div span {
+  text-align: center;
+  font-size: 30px;
+  font-family: 'Luckiest Guy', cursive;
+  color: rgb(36, 36, 36);
+  background-color: rgb(219, 198, 169);
+  margin: 0 30px 5px 30px;
+  border-radius: 5px;
+}
+
+.modal-content .level-score .easy .title{
+  color: rgb(38, 110, 54);
+}
+
+.modal-content .level-score .normal .title{
+  color: rgb(156, 93, 57);
+}
+
+.modal-content .level-score .hard .title{
+  color: rgb(146, 21, 21);
+}
+
+.modal-content .game-info {
+  float: left;
+  border: 5px solid rgb(219, 198, 169);
+  border-radius: 5px;
+  margin: 20px;
+  padding: 5px;
+  font-size: 18px;
+  font-family: 'cookieRunBold';
+  line-height: 50px;
 }
