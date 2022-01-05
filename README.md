@@ -78,3 +78,6 @@ Hex code를 랜덤으로 생성해 배경색을 랜덤으로 바꾸는 프로젝
 
 #### Day 16. Mouse Move Shadow
 > https://kimdaeun1031.github.io/javascript-project/JavaScript30/16%20-%20Mouse%20Move%20Shadow/index-START.html
+
+#### Day 17. Sort Without Articles
+> https://kimdaeun1031.github.io/javascript-project/JavaScript30/17%20-%20Sort%20Without%20Articles/index-START.html
