@@ -81,3 +81,6 @@ Hex code를 랜덤으로 생성해 배경색을 랜덤으로 바꾸는 프로젝
 
 #### Day 17. Sort Without Articles
 > https://kimdaeun1031.github.io/javascript-project/JavaScript30/17%20-%20Sort%20Without%20Articles/index-START.html
+
+#### Day 18. Adding Up Times with Reduce
+> https://kimdaeun1031.github.io/javascript-project/JavaScript30/18%20-%20Adding%20Up%20Times%20with%20Reduce/index-START.html
