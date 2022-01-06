@@ -154,6 +154,7 @@ function timer() {
     }
 }
 
+// 게임 종료
 function init() {
     time.innerHTML = 60;
     second = 60;
@@ -196,3 +197,86 @@ function changeCss() {
 const reset = document.querySelector('.pause');
 reset.addEventListener('click', init);
 
+// 게임 정보 modal
+const modal = document.querySelector('.modal');
+const modal_btn = document.querySelector('.score');
+const close_btn = document.querySelector('.close-modal');
+
+close_btn.addEventListener('click', closeInfoModal);
+modal_btn.addEventListener('click', openInfoModal);
+
+function closeInfoModal() {
+    modal.style.display = "none";
+}
+
+function openInfoModal() {
+    modal.style.display = "inline";
+}
+
+// 게임 설정 modal
+const setting_btn = document.querySelector('.pause');
+const setting_modal = document.querySelector('.speech-bubble');
+const bgm = document.querySelector('.bgmplayer');
+const ranges = document.querySelectorAll('.player__slider');
+const volumBtns = document.querySelectorAll('.setting-content i');
+console.log(volumBtns)
+
+setting_btn.addEventListener('click', toggleBtn);
+
+ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
+ranges.forEach(range => range.addEventListener('mousemove', handleRangeUpdate));
+
+volumBtns.forEach(volum => volum.addEventListener('click', musicMut));
+
+window.addEventListener('beforeunload', playMusic);
+
+function toggleBtn() {
+    setting_btn.classList.toggle('open');
+    if (setting_btn.className.split(' ')[1] === 'open') {
+        setting_modal.style.display = 'inline';
+    } else {
+        setting_modal.style.display = 'none';
+    }
+}
+
+function handleRangeUpdate() {
+    bgm[this.name] = this.value;
+}
+
+function playMusic(ev) {
+    ev.preventDefault();
+    bgm.play();
+}
+
+function musicMut() {
+    this.classList.toggle('mut');
+
+    if (this.className.split(' ')[1] === 'mut') {
+        for (let i = 0; i < ranges.length; i++) {
+            if (ranges[i].id == 'bgm') {
+                ranges[0].value = 0;
+                break;
+            } else {
+                ranges[1].value = 0;
+                break;
+            }
+        }
+            
+        bgm.volume = 0.0;
+        this.innerHTML = 'volume_off';
+    } else {
+        for (let i = 0; i < ranges.length; i++) {
+            if (ranges[i].id == 'bgm') {
+                ranges[0].value = 0.5;
+                break;
+            } else {
+                ranges[1].value = 0.5;
+                break;
+            }
+        }
+
+        bgm.volume = 0.5;
+        bgm.play();
+        this.innerHTML = 'volume_up';
+    }
+}
