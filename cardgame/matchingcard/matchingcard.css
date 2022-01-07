@@ -96,18 +96,25 @@ body {
     border-style: solid none none none;
     border-color: rgba(104, 104, 104, 0.39);
     display: flex;
+    flex-direction: column;
 }
 
 .board .board-border {
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: center; */
     align-content: center;
     padding: 80px;
 }
 
+.board-menu i {
+  margin: 10px 10px 30px 10px ;
+  font-size: 50px;
+  color: rgb(36, 36, 36);
+  cursor: pointer;
+}
+
 .board-menu .time {
-    visibility: hidden;
+    display: none;
     background-color: rgb(255, 112, 112);
     width: 60px;
     height: 60px;
@@ -117,7 +124,7 @@ body {
     box-shadow: inset 0 0 5px gray;
 }
 
-.board-menu .time .second {
+.board-menu .time .second { 
     text-align: center;
     margin-top: 10px;
     font-size: 40px;
@@ -133,7 +140,8 @@ body {
     letter-spacing: 6px;
 }
 
-.board-menu .pause i {
+.board-menu .setting i {
+    margin-top: 25px;
     margin-right: 10px;
     font-size: 50px;
     color: rgb(36, 36, 36);
@@ -141,19 +149,27 @@ body {
 }
 
 /* score */
-.board .score i {
 
+.board .score {
+  margin-bottom: 100px;
+}
+
+.board .score i {
+  
   margin: 10px;
-  color: rgb(0, 0, 0);
+  color: rgb(20, 20, 20);
   cursor: pointer;
 }
 
-/* difficulty */
-
-.board .game-start .difficulty {
-  margin-left: 70px;
-  margin-top: 300px;
+.board .score p {
+  display: none;
+  margin: 10px;
+  color: rgb(20, 20, 20);
+  font-size: 25px;
+  font-family: 'Luckiest Guy', cursive;
 }
+
+/* difficulty */
 
 .board .game-start .difficulty p {
   text-align: center;
@@ -167,7 +183,7 @@ body {
 .board .game-start .difficulty div {
   background-clip: padding-box;
   background-color: rgba(49, 38, 15, 0.795);
-  margin: 10px;
+  margin: 10px 280px;
   width: 230px;
   text-align: center;
   padding-top: 10px;
@@ -217,18 +233,18 @@ body {
 /* 카드 뒤집기 애니메이션 */
 .cardRotate .card-back {
   opacity:1;
-  animation: rotateAni 0.5s 1;
+  animation: rotateAni 0.2s 1;
   transform: rotateY(90deg);
 }
 
 .cardRotate .card-front {
   opacity:1;
-  animation: rotateAni2 0.5s 0.5s 1 backwards; 
+  animation: rotateAni2 0.2s 0.2s 1 backwards; 
   transform: rotateY(0deg) !important;
 }
 
 .backRotate .card-back{
-  animation: backAni 0.5s 1; 
+  animation: backAni 0.2s 1; 
   opacity:1;
 }
 

@@ -12,11 +12,12 @@
 <body>
     <!-- 카드 짝 맞추기 게임 -->
     <div class="board-menu">
+        <i class="material-icons">▶️</i>
         <div class="time">
-            <div class="second">60</div>
+            <div class="second">60</div>           
         </div>
         <div class="round">Matching Card</div>
-        <div class="pause">
+        <div class="setting">
             <i class="material-icons">settings</i>
             <!--pause  -->
         </div>
@@ -24,6 +25,9 @@
     <div class="board">
         <div class="score">
             <i class="material-icons">info</i>
+            <!-- easy normal hard에 따라서 베스트 스코어가 다름 -->
+            <p class="bestScore">Best Score : </p>
+            <p class="myScore">Score : </p>        
         </div>
         <div class="board-border">
             <!-- <div class="card">
@@ -87,7 +91,7 @@
         </div>
     </div>
 
-    <audio class="bgmplayer" src="./audio/BGM01.mp3" loop autoplay></audio>
+    <audio class="bgmplayer" src="./audio/BGM01.mp3" loop></audio>
     <!-- <audio src="./" loop autoplay></audio> -->
 
     <div class="speech-bubble">
