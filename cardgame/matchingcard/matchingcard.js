@@ -1,5 +1,6 @@
 let list = [];
 const board = document.querySelector('.board-border');
+const boardScore = document.querySelector('.board .score');
 
 const game_start = document.querySelector('.game-start');
 const difficulty = document.querySelector('.difficulty');
@@ -12,6 +13,8 @@ const playBtn = document.querySelector('.board-menu i');
 const timeSecond = document.querySelector('.time');
 const round = document.querySelector('.round');
 
+const nextRoundModal = document.querySelector('.next-round');
+
 // 게임 시작 이벤트 호출
 level.forEach(item => {
     let difficultyName = item.className.slice(6, item.length);
@@ -21,7 +24,10 @@ level.forEach(item => {
         board.id = difficultyName;
         console.log(difficultyName);
         gameLevel(difficultyName);
+        bestScore.innerHTML = `Best Score : ${bestScoreNum}`;
+        score.innerHTML = `Score : ${scoreNum}`;
     });
+    item.addEventListener('click', buttonClick);
 });
 
 // 카드 만들기
@@ -41,7 +47,7 @@ function createCard() {
         card.id = list.length;
     }
     
-    // 속성 추가
+    //이미지 속성 추가
     if (card.id == 1) {
         img.setAttribute('src', './image/card-front-img01.jpg');
         img.setAttribute('alt', '카드');
@@ -73,10 +79,15 @@ function createCard() {
     // 카드 클릭
     card.addEventListener('click', function() {
         card.classList.add('cardRotate');
-        card.classList.remove('backRotate');          
+        card.classList.remove('backRotate');
+
         setTimeout(checkSameCard, 500);
-        console.log(list);     
-    })
+
+        sfx[0].load();
+        setTimeout(function() {
+            sfx[0].play();
+        }, 1);
+    });
 
 }
 
@@ -90,8 +101,10 @@ function stopClick(ev) {
 // 클릭 이벤트 정지 해제
 function startClick() {
     const allCards = document.querySelectorAll('.card');
+
     for (let idx in allCards) {
         let el = allCards[idx];
+
         if (el.addEventListener) {
             el.removeEventListener('click', stopClick, true);
         }
@@ -102,11 +115,11 @@ function startClick() {
 function checkSameCard() {
     const cards = document.querySelectorAll('.cardRotate');
     const allCards = document.querySelectorAll('.card');
-    console.log(cards);
 
     if (cards.length >= 2) {
         for (let idx in allCards) {
             let el = allCards[idx];
+
             if (el.addEventListener) {
                 el.addEventListener('click', stopClick, true);
             }
@@ -114,38 +127,76 @@ function checkSameCard() {
     } 
       
     // 카드 짝이 안 맞는 경우
-    if (cards[0].id !== cards[1].id && cards.length === 2) {         
+    if (cards[0].id !== cards[1].id && cards.length === 2) {
+
         cards.forEach(function(card) {
             card.classList.remove('cardRotate');
             card.classList.add('backRotate');
-        }); 
-        setTimeout(startClick, 200);
+
+            sfx[0].load();
+            setTimeout(function() {
+                sfx[0].play();
+            }, 1);
+        });
         second -= 4;
+        setTimeout(startClick, 200);
+        
     } else if (cards.length === 2) {
         // 카드 짝이 맞는 경우
         cards.forEach(card => {       
             card.classList.remove('cardRotate');
             card.classList.add('clear');
-            list.pop(card.id);
-            card.style.visibility = 'hidden';  
-            console.log(list.length )  
-            if (list.length === 0) {
-                console.log(list.length ) 
-               let clearRound = round.innerHTML.slice(0,1);
-               let num = Number.parseInt(clearRound) + 1;
 
-               switch(board.id) {
-                    case 'easy' : easyRound(num); break;
-                    // case 'normal' : gameStart(6); break;
-                    // case 'hard' : gameStart(8); break;
-                }
+            list.pop(card.id);
+            card.style.visibility = 'hidden'; 
+
+            sfx[1].load();
+            setTimeout(function() {
+                sfx[1].play();
+            }, 1);
+      
+            roundScore(board.id)
+
+            if (list.length === 0) {
+                nextRoundModal.style.display = 'inline';
+                clearInterval(clearTime);             
+                fiveTimer(5);
             }
         });
-        setTimeout(startClick, 200); 
+
         second += 3;
-    }
+        setTimeout(startClick, 200); 
+          
+    } 
 }
 
+
+// 스코어
+let bestScoreNum = 0;
+let scoreNum = 0;
+
+function roundScore(difficulty) {
+    switch(difficulty) {
+        case 'easy' : {
+            if (bestScoreNum <= scoreNum) {
+                scoreNum += 2;
+                bestScoreNum += 2;
+                bestScore.innerHTML = `Best Score : ${bestScoreNum}`;
+                score.innerHTML = `Score : ${scoreNum}`;
+            } else {
+                scoreNum += 2;
+                score.innerHTML = `Score : ${scoreNum}`;
+            }
+            break;
+        }
+        case 'normal' : {
+            
+        }
+        case 'hard' : {
+            
+        }
+    }
+}
 
 
 // 랜덤 배치
@@ -160,47 +211,102 @@ function random() {
     }
 
     arr.forEach(card => board.appendChild(card));
-    console.log(board)
 }
 
 // 타이머 설정
 const time = document.querySelector('.second');
 let second = Number(time.innerHTML);  
-let resetTime = null;
+let clearTime;
 
-function timer() {  
-    if (second > 0) {
-        second -= 1;
-        time.innerHTML = second;
-    } else {
-        init();
-    }
+function timer() {
+    clearTime = setInterval(function() {
+        if (second > 0) {
+            second -= 1;
+            time.innerHTML = second;
+        } else {
+            init();
+        }
+    }, 1000);
+}
+
+// 5초 타이머
+const fiveSecondTimer = document.querySelectorAll('.auto-start');
+let clearFiveTimer;
+
+function fiveTimer(s) {
+
+    fiveSecondTimer[0].innerHTML = s;
+    fiveSecondTimer[1].innerHTML = s;
+    clearFiveTimer = setInterval(function() {
+        if (s > 0) {
+            s -= 1;
+            fiveSecondTimer[0].innerHTML = s;
+            fiveSecondTimer[1].innerHTML = s;
+        } else {
+            clearInterval(clearFiveTimer);   
+            fiveSecondTimer[0].innerHTML = s;
+            fiveSecondTimer[1].innerHTML = s;           
+
+            if (list.length === 0) {
+                nextRound();        
+            }        
+        }
+    }, 1000);
 }
 
 // 카드 개수에 따른 정렬 - margin&padding 수치 변환
-function changeCss() {
+function changeCss(num) {
      let card = document.querySelectorAll('.card');
+    console.log(num)
+     switch(num) {
+         case 4 : {
+            card.forEach(cardItem => {
+                cardItem.style.margin = '60px 70px 10px 60px';
+            })
+            board.style.padding = '70px 100px';
+            break;
+         }
+         case 6 : {
+            card.forEach(cardItem => {
+                cardItem.style.margin = '30px';
+            })
+            board.style.padding = '100px 55px';
+            break;
+         }
+         case 8 : {
+            card.forEach(cardItem => {
+                cardItem.style.margin = '10px 10px 60px 10px';
+            })
+            board.style.padding = '100px 20px';
+            break;
+         }
+         case 12 : {
+            card.forEach(cardItem => {
+                cardItem.style.margin = '22px';
+                cardItem.style.width = '100px'
+                cardItem.style.height = '160px'
+            })
+            board.style.padding = '100px 50px'
+            break;
+         }
+         case 16 : {
 
-    if (card.length === 4) {
-        card.forEach(cardItem => {
-            cardItem.style.margin = '60px 70px 10px 60px';
-        })
-        board.style.padding = '70px 100px'
-    }
+            break;
+         }
+         case 20 : {
+            break;
 
-    if (card.length === 6) {
-        card.forEach(cardItem => {
-            cardItem.style.margin = '30px';
-        })
-        board.style.padding = '100px 55px'
-    }
-
-    if (card.length === 8) {
-        card.forEach(cardItem => {
-            cardItem.style.margin = '10px 10px 60px 10px';
-        })
-        board.style.padding = '100px 20px'
-    }
+         }
+         case 24 : {
+            break;
+         }
+         case 30 : {
+            break;
+         }
+         case 36 : {
+            break;
+         }
+     }
 } 
 
 // 게임 시작 난이도 구별
@@ -218,19 +324,24 @@ function gameStart(level) {
         createCard();                        
     }
 
+    sfx[2].load();
+    setTimeout(function() {
+        sfx[2].play();
+    }, 1);
+
     playBtn.style.display = 'none';
     info.style.display = 'none';
 
     timeSecond.style.display = 'inline';
+    fiveSecondTimer[0].style.display = 'inline';
     bestScore.style.display = 'block';
     score.style.display = 'block';
 
+    boardScore.style.marginBottom = '0';
+
     round.textContent = '1 Round';
 
-    resetTime = setInterval(timer, 1000);
-    random();
-    changeCss();
-
+    
     const cards = document.querySelectorAll('.card');
 
     cards.forEach(card => {
@@ -239,9 +350,11 @@ function gameStart(level) {
         if (card.addEventListener) {
             card.addEventListener('click', stopClick, true);
         }   
-    });
+    });  
 
-    setTimeout(startClickEvent, 5000);    
+    random();
+    changeCss(cards.length);
+    setTime(5);
 }
 
 // 클릭 이벤트 정지 해제
@@ -253,37 +366,68 @@ function startClickEvent() {
             el.removeEventListener('click', stopClick, true);
             el.classList.add('backRotate');
             el.classList.remove('cardRotate');
+
+            sfx[0].load();
+            setTimeout(function() {
+                sfx[0].play();
+            }, 1);
             
         }
     }  
+}
+
+// 다음 라운드
+const nextRoundBtn = document.querySelector('.next-roundBtn');
+const gameStopBtn = document.querySelector('.stopGameBtn');
+
+nextRoundBtn.addEventListener('click', nextRound);
+nextRoundBtn.addEventListener('click', buttonClick);
+
+function nextRound() {
+    nextRoundModal.style.display = 'none';
+
+    clearInterval(clearFiveTimer);       
+
+    let clearRound = round.innerHTML.slice(0,1);
+    let num = Number.parseInt(clearRound) + 1;
+
+    switch(board.id) {
+         case 'easy' : easyRound(num); break;
+         case 'normal' : normalRound(num); break;
+         case 'hard' : hardRound(num); break;
+    }
 }
 
 // easy 난이도
 function easyRound(level) {
     switch(level) {
         case 2 : {
-            easyMode(4, level);
+            mode(4, level);
+            setTime(5);
             break;
         }
 
         case 3 : case 4 : case 5 : {
-            easyMode(8, level);
+            mode(8, level);
+            setTime(4);
             break;
         }
 
         case 6 : case 7 : case 8 : case 9 : case 10 : {
-            easyMode(16, level);
+            mode(16, level);
+            setTime(3);
             break;
         }
 
         default : {
-            easyMode(20, level);
+            mode(20, level);
+            setTime(2);
             break;
         }
     }
 }
 
-function easyMode(piece, r) {
+function mode(piece, r) {
     while (board.hasChildNodes()) {
         board.removeChild(board.firstChild);
     }
@@ -291,9 +435,15 @@ function easyMode(piece, r) {
     for (let i = 0; i < piece; i++) {
         createCard();                        
     }
+    
+    sfx[2].load();
+    setTimeout(function() {
+        sfx[2].play();
+    }, 1);
+
     round.textContent = `${r} Round`;
-    random();
-    changeCss();
+
+    fiveSecondTimer[0].style.visibility = 'visible';
 
     const cards = document.querySelectorAll('.card');
 
@@ -305,21 +455,92 @@ function easyMode(piece, r) {
         }   
     });
 
-    setTimeout(startClickEvent, 5000);    
+    random();
+    changeCss(cards.length);
+
 }
 
 // normal 난이도
+function normalRound(level) {
+    switch(level) {
+        case 2 : {
+            mode(6, level);
+            setTime(5);
+            break;
+        }
+
+        case 3 : case 4 : case 5 : {
+            mode(12, level);
+            setTime(4);
+            break;
+        }
+
+        case 6 : case 7 : case 8 : case 9 : case 10 : {
+            mode(24, level);
+            setTime(3);
+            break;
+        }
+
+        default : {
+            mode(30, level);
+            setTime(2);
+            break;
+        }
+    }
+}
 
 // hard 난이도
+function hardRound(level) {
+    switch(level) {
+        case 2 : {
+            mode(8, level);
+            setTime(5);
+            break;
+        }
 
+        case 3 : case 4 : case 5 : {
+            mode(16, level);
+            setTime(4);
+            break;
+        }
+
+        case 6 : case 7 : case 8 : case 9 : case 10 : {
+            mode(24, level);
+            setTime(3);
+            break;
+        }
+
+        default : {
+            mode(36, level);
+            setTime(2);
+            break;
+        }
+    }
+}
+
+// 타이머 설정
+function setTime(time) {
+    clearInterval(clearFiveTimer);
+    fiveSecondTimer[0].innerHTML = time;
+    fiveSecondTimer[1].innerHTML = time;
+    fiveTimer(time);  
+    setTimeout(function() {
+        fiveSecondTimer[0].style.visibility = 'hidden';
+    }, time * 1000);
+    setTimeout(timer, time * 1000);
+    setTimeout(startClickEvent, time * 1000);
+}
 
 // 게임 종료 시 초기화
 function init() {
+    console.log('clear');
     time.innerHTML = 60;
     second = 60;
+
     while (board.hasChildNodes()) {
         board.removeChild(board.firstChild);
     }
+
     list = [];
     game_start.style.display = 'inline';
     info.style.display = 'block';
@@ -332,13 +553,13 @@ function init() {
     round.textContent = 'Matching Card';
     board.style.padding = '80px'
     board.id = 'not choice';
-    clearInterval(resetTime);
+    clearInterval(clearTime);
 }
 
 
 // 게임 끝내기 버튼 (임시)
-const reset = document.querySelector('.setting');
-reset.addEventListener('click', init);
+// const reset = document.querySelector('.setting');
+// reset.addEventListener('click', init);
 
 // 게임 정보 modal
 const modal = document.querySelector('.modal');
@@ -346,7 +567,9 @@ const modal_btn = document.querySelector('.score i');
 const close_btn = document.querySelector('.close-modal');
 
 close_btn.addEventListener('click', closeInfoModal);
+close_btn.addEventListener('click', buttonClick);
 modal_btn.addEventListener('click', openInfoModal);
+modal_btn.addEventListener('click', buttonClick);
 
 // 정보 modal close
 function closeInfoModal() {
@@ -362,16 +585,19 @@ function openInfoModal() {
 const setting_btn = document.querySelector('.setting');
 const setting_modal = document.querySelector('.speech-bubble');
 const bgm = document.querySelector('.bgmplayer');
+const sfx = document.querySelectorAll('.sfxplayer');
 const ranges = document.querySelectorAll('.player__slider');
 const volumBtns = document.querySelectorAll('.setting-content i');
 console.log(volumBtns)
 
 setting_btn.addEventListener('click', toggleBtn);
+setting_btn.addEventListener('click', buttonClick);
 
 ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
 ranges.forEach(range => range.addEventListener('mousemove', handleRangeUpdate));
 
 volumBtns.forEach(volum => volum.addEventListener('click', musicMut));
+volumBtns.forEach(volum => volum.addEventListener('click', buttonClick));
 
 window.addEventListener('beforeunload', playMusic);
 
@@ -433,6 +659,7 @@ function musicMut() {
 // 배경음악 재생 여부
 const bgmPlayer = document.querySelector('.board-menu i');
 bgmPlayer.addEventListener('click', bgmPlay);
+bgmPlayer.addEventListener('click', buttonClick);
 
 function bgmPlay() {
     bgmPlayer.classList.toggle('play');
@@ -445,4 +672,12 @@ function bgmPlay() {
         bgmPlayer.style.margin = "10px 10px 30px 10px"
         bgm.pause();
     }
+}
+
+// 버튼 클릭 소리
+function buttonClick() {
+    sfx[3].load();
+    setTimeout(function() {
+        sfx[3].play();
+    }, 1);
 }

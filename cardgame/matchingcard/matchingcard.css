@@ -155,7 +155,6 @@ body {
 }
 
 .board .score i {
-  
   margin: 10px;
   color: rgb(20, 20, 20);
   cursor: pointer;
@@ -167,6 +166,17 @@ body {
   color: rgb(20, 20, 20);
   font-size: 25px;
   font-family: 'Luckiest Guy', cursive;
+}
+
+/* 5 second timer */
+.board .auto-start {
+  display: none;
+  text-align: center;
+  font-size: 80px;
+  font-family: 'Luckiest Guy', cursive;
+  color: rgba(255, 255, 255, 0.918);
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 /* difficulty */
@@ -439,7 +449,6 @@ body {
   text-align: center;
   padding: 0 auto;
   margin: 5px;
-  text-align: center;
   font-size: 40px;
   font-family: 'Luckiest Guy', cursive;
   color: rgb(36, 36, 36);
@@ -471,7 +480,40 @@ body {
   cursor: pointer;
 }
 
-/* range */
+.speech-bubble .credit {
+  text-align: center;
+  padding: 0 auto;
+  margin: 5px;
+  text-align: center;
+  font-size: 40px;
+  font-family: 'Luckiest Guy', cursive;
+  color: rgb(36, 36, 36);
+}
+
+.speech-bubble .credit-name {
+  padding: 0 auto;
+  margin: 10px;
+  text-align: center;
+  font-size: 30px;
+  font-family: 'Luckiest Guy', cursive;
+  color: rgb(36, 36, 36);
+}
+
+.speech-bubble .copyright {
+  padding: 0 auto;
+  margin: 20px 5px 5px 5px;
+  text-align: center;
+  font-size: 24px;
+  font-family: 'Luckiest Guy', cursive;
+  color: rgb(36, 36, 36);
+}
+
+.speech-bubble hr {
+  margin: 0;
+  border: solid 2px rgba(199, 199, 199, 0.699);
+}
+
+/* setting - range */
 
 .speech-bubble .setting-content .player__slider {
   width: 280px;
@@ -532,39 +574,71 @@ input[type=range]::-moz-range-thumb {
   cursor: pointer;
 }
 
-.speech-bubble .credit {
-  text-align: center;
-  padding: 0 auto;
-  margin: 5px;
-  text-align: center;
-  font-size: 40px;
-  font-family: 'Luckiest Guy', cursive;
-  color: rgb(36, 36, 36);
-}
-
-.speech-bubble .credit-name {
-  padding: 0 auto;
-  margin: 10px;
-  text-align: center;
-  font-size: 30px;
-  font-family: 'Luckiest Guy', cursive;
-  color: rgb(36, 36, 36);
-}
-
-.speech-bubble .copyright {
-  padding: 0 auto;
-  margin: 20px 5px 5px 5px;
-  text-align: center;
-  font-size: 24px;
-  font-family: 'Luckiest Guy', cursive;
-  color: rgb(36, 36, 36);
-}
-
-.speech-bubble hr {
-  margin: 0;
-  border: solid 2px rgba(199, 199, 199, 0.699);
-}
-
-audio {
+.next-round {
   display: none;
+}
+
+.modal-next-round {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.modal-next-round .modal-container {
+  position: absolute;
+  background-color: rgba(90, 90, 90, 0.445);
+  width: 340px;
+  height: 400px;
+  top: 30%;
+  border: 5px solid rgb(34, 34, 34);
+  border-radius: 10px;
+  box-shadow: 1px 2px 4px rgb(56, 56, 56);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-next-round .modal-container .auto-start {
+  font-size: 80px;
+  font-family: 'Luckiest Guy', cursive;
+  color: rgba(255, 255, 255, 0.918);
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.modal-next-round .modal-container .next-roundBtn {
+  background-clip: padding-box;
+  background-color: rgba(49, 38, 15, 0.795);
+  margin: 10px 280px;
+  width: 230px;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 7px double rgba(49, 38, 15, 0.795);
+  border-radius: 10px;
+  font-family: 'cookieRunBold';
+  font-size: 30px;
+  color: rgba(255, 255, 255, 0.918);
+  cursor: pointer;
+}
+
+.modal-next-round .modal-container .stopGameBtn {
+  background-clip: padding-box;
+  background-color: rgba(49, 38, 15, 0.795);
+  margin: 10px 280px;
+  width: 230px;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 7px double rgba(49, 38, 15, 0.795);
+  border-radius: 10px;
+  font-family: 'cookieRunBold';
+  font-size: 30px;
+  color: rgba(255, 255, 255, 0.918);
+  cursor: pointer;
 }
