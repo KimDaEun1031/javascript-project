@@ -24,7 +24,31 @@ level.forEach(item => {
         board.id = difficultyName;
         console.log(difficultyName);
         gameLevel(difficultyName);
-        bestScore.innerHTML = `Best Score : ${bestScoreNum}`;
+
+        switch(difficultyName) {
+            case 'easy' : 
+                if (easyBestScore.innerHTML == '---') {
+                    bestScore.innerHTML = 'Best Score : 0';
+                } else {
+                    bestScore.innerHTML = `Best Score : ${easyBestScore.innerHTML}`;
+                }
+             break;
+            case 'normal' : 
+                if (normalBestScore.innerHTML == '---') {
+                    bestScore.innerHTML = 'Best Score : 0';
+                } else {
+                    bestScore.innerHTML = `Best Score : ${normalBestScore.innerHTML}`;
+                }
+             break;
+            case 'hard' :
+                if (hardBestScore.innerHTML == '---') {
+                    bestScore.innerHTML = 'Best Score : 0';
+                } else {
+                    bestScore.innerHTML = `Best Score : ${hardBestScore.innerHTML}`;
+                }
+             break;
+        }
+        
         score.innerHTML = `Score : ${scoreNum}`;
     });
     item.addEventListener('click', buttonClick);
@@ -63,6 +87,45 @@ function createCard() {
     } else if (card.id == 9) {
         img.setAttribute('src', './image/card-front-img05.jpg');
         img.setAttribute('alt', '카드');
+    } else if (card.id == 11) {
+        img.setAttribute('src', './image/card-front-img06.jpg');
+        img.setAttribute('alt', '카드');
+    } else if (card.id == 13) {
+        img.setAttribute('src', './image/card-front-img07.jpg');
+        img.setAttribute('alt', '카드');
+    } else if (card.id == 15) {
+        img.setAttribute('src', './image/card-front-img08.jpg');
+        img.setAttribute('alt', '카드');
+    } else if (card.id == 17) {
+        img.setAttribute('src', './image/card-front-img09.jpg');
+        img.setAttribute('alt', '카드');
+    } else if (card.id == 19) {
+        img.setAttribute('src', './image/card-front-img10.jpg');
+        img.setAttribute('alt', '카드');
+    } else if (card.id == 21) {
+        img.setAttribute('src', './image/card-front-img11.jpg');
+        img.setAttribute('alt', '카드');
+    } else if (card.id == 23) {
+        img.setAttribute('src', './image/card-front-img12.jpg');
+        img.setAttribute('alt', '카드');
+    } else if (card.id == 25) {
+        img.setAttribute('src', './image/card-front-img13.jpg');
+        img.setAttribute('alt', '카드');
+    } else if (card.id == 27) {
+        img.setAttribute('src', './image/card-front-img14.jpg');
+        img.setAttribute('alt', '카드');
+    } else if (card.id == 29) {
+        img.setAttribute('src', './image/card-front-img15.jpg');
+        img.setAttribute('alt', '카드');
+    } else if (card.id == 31) {
+        img.setAttribute('src', './image/card-front-img16.jpg');
+        img.setAttribute('alt', '카드');
+    } else if (card.id == 33) {
+        img.setAttribute('src', './image/card-front-img17.png');
+        img.setAttribute('alt', '카드');
+    } else if (card.id == 35) {
+        img.setAttribute('src', './image/card-front-img18.jpg');
+        img.setAttribute('alt', '카드');
     }
     
 
@@ -75,6 +138,7 @@ function createCard() {
     game_start.style.display = 'none';
     list.push(card.id);
 
+    console.log(list)
 
     // 카드 클릭
     card.addEventListener('click', function() {
@@ -128,7 +192,7 @@ function checkSameCard() {
       
     // 카드 짝이 안 맞는 경우
     if (cards[0].id !== cards[1].id && cards.length === 2) {
-
+        second -= 4;
         cards.forEach(function(card) {
             card.classList.remove('cardRotate');
             card.classList.add('backRotate');
@@ -138,11 +202,12 @@ function checkSameCard() {
                 sfx[0].play();
             }, 1);
         });
-        second -= 4;
+        
         setTimeout(startClick, 200);
         
     } else if (cards.length === 2) {
         // 카드 짝이 맞는 경우
+        second += 3;
         cards.forEach(card => {       
             card.classList.remove('cardRotate');
             card.classList.add('clear');
@@ -164,9 +229,7 @@ function checkSameCard() {
             }
         });
 
-        second += 3;
-        setTimeout(startClick, 200); 
-          
+        setTimeout(startClick, 200);      
     } 
 }
 
@@ -181,7 +244,11 @@ function roundScore(difficulty) {
             if (bestScoreNum <= scoreNum) {
                 scoreNum += 2;
                 bestScoreNum += 2;
-                bestScore.innerHTML = `Best Score : ${bestScoreNum}`;
+                if (easyBestScore.innerHTML == '---') {
+                    bestScore.innerHTML = `Best Score : ${bestScoreNum}`;
+                } else {
+                    bestScore.innerHTML = `Best Score : ${easyBestScore.innerHTML}`;
+                }
                 score.innerHTML = `Score : ${scoreNum}`;
             } else {
                 scoreNum += 2;
@@ -190,14 +257,41 @@ function roundScore(difficulty) {
             break;
         }
         case 'normal' : {
+            if (bestScoreNum <= scoreNum) {
+                scoreNum += 3;
+                bestScoreNum += 3;
+                if (normalBestScore.innerHTML == '---') {
+                    bestScore.innerHTML = `Best Score : ${bestScoreNum}`;
+                } else {
+                    bestScore.innerHTML = `Best Score : ${normalBestScore.innerHTML}`;
+                }
+                score.innerHTML = `Score : ${scoreNum}`;
+            } else {
+                scoreNum += 3;
+                score.innerHTML = `Score : ${scoreNum}`;
+            }
+            break;
             
         }
         case 'hard' : {
+            if (bestScoreNum <= scoreNum) {
+                scoreNum += 5;
+                bestScoreNum += 5;
+                if (hardBestScore.innerHTML == '---') {
+                    bestScore.innerHTML = `Best Score : ${bestScoreNum}`;
+                } else {
+                    bestScore.innerHTML = `Best Score : ${hardBestScore.innerHTML}`;
+                }
+                score.innerHTML = `Score : ${scoreNum}`;
+            } else {
+                scoreNum += 5;
+                score.innerHTML = `Score : ${scoreNum}`;
+            }
+            break;
             
         }
     }
 }
-
 
 // 랜덤 배치
 function random() {
@@ -257,7 +351,7 @@ function fiveTimer(s) {
 // 카드 개수에 따른 정렬 - margin&padding 수치 변환
 function changeCss(num) {
      let card = document.querySelectorAll('.card');
-    console.log(num)
+
      switch(num) {
          case 4 : {
             card.forEach(cardItem => {
@@ -283,27 +377,92 @@ function changeCss(num) {
          case 12 : {
             card.forEach(cardItem => {
                 cardItem.style.margin = '22px';
-                cardItem.style.width = '100px'
-                cardItem.style.height = '160px'
+                cardItem.style.width = '120px'
+                cardItem.style.height = '180px'
+                cardItem.children[0].style.width = '120px'
+                cardItem.children[0].style.height = '180px'
+                cardItem.children[1].style.width = '120px'
+                cardItem.children[1].style.height = '180px'
+                cardItem.children[0].children[0].style.width = '120px'
+                cardItem.children[0].children[0].style.height = '180px'
             })
             board.style.padding = '100px 50px'
             break;
          }
          case 16 : {
-
+            card.forEach(cardItem => {
+                cardItem.style.margin = '0 25px 10px 25px';
+                cardItem.style.width = '120px'
+                cardItem.style.height = '180px'
+                cardItem.children[0].style.width = '120px'
+                cardItem.children[0].style.height = '180px'
+                cardItem.children[1].style.width = '120px'
+                cardItem.children[1].style.height = '180px'
+                cardItem.children[0].children[0].style.width = '120px'
+                cardItem.children[0].children[0].style.height = '180px'
+            })
+            board.style.padding = '0 40px 0 40px'
             break;
          }
          case 20 : {
+            card.forEach(cardItem => {
+                cardItem.style.margin = '10px 15px 10px 13px';
+                cardItem.style.width = '110px'
+                cardItem.style.height = '170px'
+                cardItem.children[0].style.width = '110px'
+                cardItem.children[0].style.height = '170px'
+                cardItem.children[1].style.width = '110px'
+                cardItem.children[1].style.height = '170px'
+                cardItem.children[0].children[0].style.width = '110px'
+                cardItem.children[0].children[0].style.height = '170px'
+            })
+            board.style.padding = '0 30px 0 30px'
             break;
 
          }
          case 24 : {
+            card.forEach(cardItem => {
+                cardItem.style.margin = '10px';
+                cardItem.style.width = '100px'
+                cardItem.style.height = '160px'
+                cardItem.children[0].style.width = '100px'
+                cardItem.children[0].style.height = '160px'
+                cardItem.children[1].style.width = '100px'
+                cardItem.children[1].style.height = '160px'
+                cardItem.children[0].children[0].style.width = '100px'
+                cardItem.children[0].children[0].style.height = '160px'
+            })
+            board.style.padding = '0 10px 0 10px'
             break;
          }
          case 30 : {
+            card.forEach(cardItem => {
+                cardItem.style.margin = '0 15px 9px 10px';
+                cardItem.style.width = '90px'
+                cardItem.style.height = '140px'
+                cardItem.children[0].style.width = '90px'
+                cardItem.children[0].style.height = '140px'
+                cardItem.children[1].style.width = '90px'
+                cardItem.children[1].style.height = '140px'
+                cardItem.children[0].children[0].style.width = '90px'
+                cardItem.children[0].children[0].style.height = '140px'
+            })
+            board.style.padding = '0 20px 0 25px'
             break;
          }
          case 36 : {
+            card.forEach(cardItem => {
+                cardItem.style.margin = '0 15px 7px 15px';
+                cardItem.style.width = '80px'
+                cardItem.style.height = '120px'
+                cardItem.children[0].style.width = '80px'
+                cardItem.children[0].style.height = '120px'
+                cardItem.children[1].style.width = '80px'
+                cardItem.children[1].style.height = '120px'
+                cardItem.children[0].children[0].style.width = '80px'
+                cardItem.children[0].children[0].style.height = '120px'
+            })
+            board.style.padding = '0 40px 0 40px'
             break;
          }
      }
@@ -341,7 +500,6 @@ function gameStart(level) {
 
     round.textContent = '1 Round';
 
-    
     const cards = document.querySelectorAll('.card');
 
     cards.forEach(card => {
@@ -382,6 +540,8 @@ const gameStopBtn = document.querySelector('.stopGameBtn');
 
 nextRoundBtn.addEventListener('click', nextRound);
 nextRoundBtn.addEventListener('click', buttonClick);
+
+gameStopBtn.addEventListener('click', init);
 
 function nextRound() {
     nextRoundModal.style.display = 'none';
@@ -427,6 +587,7 @@ function easyRound(level) {
     }
 }
 
+// 난이도
 function mode(piece, r) {
     while (board.hasChildNodes()) {
         board.removeChild(board.firstChild);
@@ -533,7 +694,10 @@ function setTime(time) {
 
 // 게임 종료 시 초기화
 function init() {
-    console.log('clear');
+
+    saveScore(); 
+    loadScore();
+
     time.innerHTML = 60;
     second = 60;
 
@@ -544,22 +708,69 @@ function init() {
     list = [];
     game_start.style.display = 'inline';
     info.style.display = 'block';
+    fiveSecondTimer[0].style.display = 'none';
 
     playBtn.style.display = 'inline';
     timeSecond.style.display = 'none';
     bestScore.style.display = 'none';
     score.style.display = 'none';
 
+    bestScoreNum = 0;
+    scoreNum = 0;
+
     round.textContent = 'Matching Card';
-    board.style.padding = '80px'
+    board.style.padding = '130px'
     board.id = 'not choice';
+    nextRoundModal.style.display = 'none';
+
+    clearInterval(clearFiveTimer); 
     clearInterval(clearTime);
 }
 
+// 스코어 저장
+const items = JSON.parse(localStorage.getItem('items')) || [];
+const easyBestStage = document.querySelector('#easyBestStage');
+const easyBestScore = document.querySelector('#easyBestScore');
+const normalBestStage = document.querySelector('#normalBestStage');
+const normalBestScore = document.querySelector('#normalBestScore');
+const hardBestStage = document.querySelector('#hardBestStage');
+const hardBestScore = document.querySelector('#hardBestScore');
 
-// 게임 끝내기 버튼 (임시)
-// const reset = document.querySelector('.setting');
-// reset.addEventListener('click', init);
+function saveScore() {
+    const item = {
+        difficulty : board.id,
+        round : round.innerHTML.split(' ')[0],
+        bestScore : bestScoreNum
+    }
+    items.push(item);
+    localStorage.setItem('items', JSON.stringify(items));
+}
+
+function loadScore() {
+    const load_score = localStorage.getItem('items');
+
+    if (load_score !== null) {
+        const parse = JSON.parse(load_score);
+        for (let pre of parse) {
+            const {difficulty, round, bestScore} = pre;
+            switch(difficulty) {
+                case 'easy' :  
+                    easyBestScore.innerHTML = bestScore;
+                    easyBestStage.innerHTML = round;                  
+                    break;
+                case 'normal' :
+                    normalBestStage.innerHTML = round;
+                    normalBestScore.innerHTML = bestScore;                   
+                    break;
+                case 'hard' :
+                    hardBestStage.innerHTML = round;
+                    hardBestScore.innerHTML = bestScore;                  
+                    break;
+            }      
+        }
+    }
+}
+loadScore();
 
 // 게임 정보 modal
 const modal = document.querySelector('.modal');
@@ -588,33 +799,53 @@ const bgm = document.querySelector('.bgmplayer');
 const sfx = document.querySelectorAll('.sfxplayer');
 const ranges = document.querySelectorAll('.player__slider');
 const volumBtns = document.querySelectorAll('.setting-content i');
-console.log(volumBtns)
+const credit = document.querySelector('.credit');
 
 setting_btn.addEventListener('click', toggleBtn);
 setting_btn.addEventListener('click', buttonClick);
 
-ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
-ranges.forEach(range => range.addEventListener('mousemove', handleRangeUpdate));
+ranges[0].addEventListener('change', handleRangeUpdate);
+ranges[0].addEventListener('mousemove', handleRangeUpdate);
+
+ranges[1].addEventListener('change', sfxHandleRangeUpdate);
+ranges[1].addEventListener('mousemove', sfxHandleRangeUpdate);
 
 volumBtns.forEach(volum => volum.addEventListener('click', musicMut));
 volumBtns.forEach(volum => volum.addEventListener('click', buttonClick));
 
 window.addEventListener('beforeunload', playMusic);
+credit.addEventListener('click', init)
 
 // 설정 modal on/off
 function toggleBtn() {
     setting_btn.classList.toggle('open');
     if (setting_btn.className.split(' ')[1] === 'open') {
-        setting_modal.style.display = 'inline';
+        setting_modal.style.display = 'inline';    
+        if (board.id.includes('easy')) {
+            clearInterval(clearTime);
+            credit.classList.add('stopGameBtn');
+            credit.textContent = '끝내기';
+        }
     } else {
-        setting_modal.style.display = 'none';
+        setting_modal.style.display = 'none';     
+        if (!board.id.includes('easy')) {
+            credit.classList.remove('stopGameBtn');
+            credit.textContent = 'Make by Kimdaeun';
+            timer();
+        }
     }
 }
 
-// range 실시간
+// bgm range 실시간
 function handleRangeUpdate() {
     bgm[this.name] = this.value;
 }
+
+// sfx range 실시간
+function sfxHandleRangeUpdate() {
+    sfx.forEach(sfxplayer => sfxplayer[this.name] = this.value);
+}
+
 
 // 새로고침 시 배경음악 플레이
 function playMusic(ev) {
@@ -627,31 +858,26 @@ function musicMut() {
     this.classList.toggle('mut');
 
     if (this.className.split(' ')[1] === 'mut') {
-        for (let i = 0; i < ranges.length; i++) {
-            if (ranges[i].id == 'bgm') {
-                ranges[0].value = 0;
-                break;
-            } else {
-                ranges[1].value = 0;
-                break;
-            }
-        }
-            
-        bgm.volume = 0.0;
+        if (this.previousElementSibling.className == 'bgm') {
+            console.log('bgm')
+            ranges[0].value = 0;
+            bgm.volume = 0.0;
+        } else {
+            ranges[1].value = 0;
+            sfx.forEach(sfxplayer => sfxplayer.volume = 0.0); 
+        }      
+        
         this.innerHTML = 'volume_off';
     } else {
-        for (let i = 0; i < ranges.length; i++) {
-            if (ranges[i].id == 'bgm') {
-                ranges[0].value = 0.5;
-                break;
-            } else {
-                ranges[1].value = 0.5;
-                break;
-            }
+        if (this.previousElementSibling.className =='bgm') {
+            ranges[0].value = 0.5;
+            bgm.volume = 0.5;
+            bgm.play();
+        } else {
+            ranges[1].value = 0.5;
+            sfx.forEach(sfxplayer => sfxplayer.volume = 0.5); 
         }
-
-        bgm.volume = 0.5;
-        bgm.play();
+        
         this.innerHTML = 'volume_up';
     }
 }
