@@ -84,3 +84,9 @@ Hex code를 랜덤으로 생성해 배경색을 랜덤으로 바꾸는 프로젝
 
 #### Day 18. Adding Up Times with Reduce
 > https://kimdaeun1031.github.io/javascript-project/JavaScript30/18%20-%20Adding%20Up%20Times%20with%20Reduce/index-START.html
+
+#### Day 19. Webcam
+> https://kimdaeun1031.github.io/javascript-project/JavaScript30/19%20-%20Webcam%20Fun/index.html
+
+#### Day 20. Speech Detection
+> https://kimdaeun1031.github.io/javascript-project/JavaScript30/20%20-%20Speech%20Detection/index-START.html
