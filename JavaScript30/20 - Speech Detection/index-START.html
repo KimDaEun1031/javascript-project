@@ -10,7 +10,55 @@
   </div>
 
 <script>
-  window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    const recognition = new SpeechRecognition();
+    recognition.interimResults = true;
+    recognition.lang = 'ja-JP'; // 영어 - en-US / 한국어 - ko-KR / 일본어 - ja-JP
+
+    let p = document.createElement('p');
+    const words = document.querySelector('.words');
+    words.appendChild(p);
+
+    recognition.addEventListener('result', e => {
+      const transcript = Array.from(e.results)
+        .map(result => result[0])
+        .map(result => result.transcript)
+        .join('');
+
+        // 날씨 검색
+        if (transcript.includes("오늘의 날씨")) {
+          window.open(
+            "https://www.google.com/search?q=%EC%98%A4%EB%8A%98+%EB%82%A0%EC%94%A8&sxsrf=AOaemvKtPlejc2MGXn0521GaP1Y4Pwatkw%3A1641969994015&ei=SnneYcA9jc35BriluOgI&ved=0ahUKEwjAiubxzqv1AhWNZt4KHbgSDo0Q4dUDCA4&uact=5&oq=%EC%98%A4%EB%8A%98+%EB%82%A0%EC%94%A8&gs_lcp=Cgdnd3Mtd2l6EAMyBQgAEIAEMgcIABCxAxBDMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQ6BAgjECc6EQguEIAEELEDEIMBEMcBENEDOggIABCABBCxAzoLCAAQgAQQsQMQgwE6BQguEIAEOgQILhAnOggILhCABBCxAzoKCAAQsQMQgwEQQzoECAAQQ0oECEEYAEoECEYYAFAAWOoIYKMKaAFwAngBgAFziAHICZIBBDAuMTGYAQCgAQHAAQE&sclient=gws-wiz"
+          );
+        }
+
+        // 유튜브 열기
+        if (transcript.includes("유튜브")) {
+          window.open(
+            "https://www.youtube.com/"
+          );
+        }
+
+        // 블로그 열기
+        if (transcript.includes("블로그")) {
+          window.open(
+            "https://relaxed-it-study.tistory.com/"
+          );
+        }
+
+        const poopScript = transcript.replace(/poop|poo|shit|dump/gi, '💩');
+        p.textContent = poopScript;
+
+        if (e.results[0].isFinal) {
+          p = document.createElement('p');
+          words.appendChild(p);
+        }
+    });
+
+    recognition.addEventListener('end', recognition.start);
+
+    recognition.start();
 
 
 </script>
