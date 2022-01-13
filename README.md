@@ -90,3 +90,6 @@ Hex code를 랜덤으로 생성해 배경색을 랜덤으로 바꾸는 프로젝
 
 #### Day 20. Speech Detection
 > https://kimdaeun1031.github.io/javascript-project/JavaScript30/20%20-%20Speech%20Detection/index-START.html
+
+#### Day 21. GeoLocation
+> https://kimdaeun1031.github.io/javascript-project/JavaScript30/21%20-%20Geolocation/index-START.html
