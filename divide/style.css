@@ -91,7 +91,7 @@ section {
     align-items: center;
 }
 
-.board .item-border {
+.board .drop-zone {
     width: 80px;
     height: 80px;
     background-color: rgb(128, 128, 128);
@@ -112,14 +112,14 @@ section {
     font-size: 36px;
     font-weight: 400;
     color: white;
-    margin: 5px;
+    padding-top: 5px;
 }
 
 .active .item {
     font-size: 50px;
     font-weight: 400;
     color: white;
-    margin: 13px 10px 10px 10px;
+    padding-top: 10px;
 }
 
 section p {
@@ -152,12 +152,14 @@ section p {
     border-radius: 10px;
     margin: 5px 5px 0 25px;
     opacity: 1;
+    cursor: pointer;
 }
 
 .stanby .keep-card {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     background-color: rgb(128, 128, 128);
     border-radius: 10px;
     margin: 5px 5px 0 25px;
+    padding: 10px;
 }
