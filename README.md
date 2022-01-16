@@ -24,11 +24,17 @@ Hex code를 랜덤으로 생성해 배경색을 랜덤으로 바꾸는 프로젝
 등록한 선물들을 랜덤확률로 얻을 수 있는 프로젝트
 > https://kimdaeun1031.github.io/javascript-project/randombox/random_box.html
 
-## 7. Card Game (제작 중)
+## 7. Card Game (제작 중, 한 개 완료)
 카드 짝 맞추기, 솔리테어(프리셀, 클론다이크, 피라미드, 스파이더) 등의 카드 게임을 할 수 있는 프로젝트
-> 
 
-## 8. Javascript30 (제작 중)
+#### Matching Card - 카드 짝 맞추기
+> https://kimdaeun1031.github.io/javascript-project/cardgame/matchingcard/matchingcard.html
+
+## 8. Divide (제작 중)
+배치한 숫자 블럭을 기준으로 네방향에 나눠지는 숫자 블럭이 있다면 계속 나눠서 0을 만들고 스코어를 올리는 게임 프로젝트
+>
+
+## 9. Javascript30 (제작 중)
 30일치 자바스크립트 프로젝트
 
 #### Day 1. Drum Kit
@@ -93,3 +99,6 @@ Hex code를 랜덤으로 생성해 배경색을 랜덤으로 바꾸는 프로젝
 
 #### Day 21. GeoLocation
 > https://kimdaeun1031.github.io/javascript-project/JavaScript30/21%20-%20Geolocation/index-START.html
+
+#### Day 22. Follow Along Link Highlighter
+> https://kimdaeun1031.github.io/javascript-project/JavaScript30/22%20-%20Follow%20Along%20Link%20Highlighter/index-START.html
