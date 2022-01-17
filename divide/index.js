@@ -1,6 +1,8 @@
 const board = document.querySelector('.board');
 const stanby = document.querySelector('.stanby');
+const score = document.querySelector('.score');
 const boardArr = [];
+const cardArr = [];
 
 let count = 0;
 for (let i = 0; i < 4; i++) {
@@ -9,15 +11,11 @@ for (let i = 0; i < 4; i++) {
         createBoard();    
     }
 }
-console.log(board);
-console.log(boardArr);
 
 for (let i = 0; i < 3; i++) {
+    cardArr.push(1);
     createNumberCard();
 }
-console.log(stanby)
-console.log(stanby.childElementCount)
-
 
 function createBoard() {
     const dragZone = document.createElement('div');
@@ -47,38 +45,22 @@ function createNumberCard() {
     numberCard.appendChild(item);
     stanby.appendChild(numberCard);
 
+    if (cardArr.length >= 3) {
+        stanby.children[1].classList.add('active');
+        stanby.children[1].setAttribute('draggable', true);
+    }
 
-
-    numberCard.addEventListener('drag', function dragCard(ev) {}, false);
+    numberCard.addEventListener('drag', function dragCard() {}, false);
     numberCard.addEventListener('dragstart', dragCardStart, false);
     numberCard.addEventListener('dragend', dragCardEnd, false);
 }
 
-if (stanby.childElementCount >= 2) {
-    // console.log(stanby.children[2])
-    stanby.children[2].classList.add('active');
-    stanby.children[2].setAttribute('draggable', true);
+const KeepCard = document.querySelector('.keep-card');
 
-    lastElement();
-}
-
-if (stanby.childElementCount <= 3) {
-    console.log('new')
-    createNumberCard();
-    lastElement();
-}
-
-function lastElement() {
-    const keepCard = document.createElement('div');
-    keepCard.classList.add('keep-card');
-    
-    stanby.appendChild(keepCard);
-
-    keepCard.addEventListener('drop', dropCard, false);
-    keepCard.addEventListener('dragenter', dragCardEnter, false);
-    keepCard.addEventListener('dragleave', dragCardLeave, false);
-    keepCard.addEventListener('dragover', dragCardOver, false);
-}
+KeepCard.addEventListener('drop', dropCard, false);
+KeepCard.addEventListener('dragenter', dragCardEnter, false);
+KeepCard.addEventListener('dragleave', dragCardLeave, false);
+KeepCard.addEventListener('dragover', dragCardOver, false);
 
 // number-card
 let dragged;
@@ -122,19 +104,45 @@ function dropCard(ev) {
         ev.target.appendChild(dragged);
 
         directionsCheck(ev.target.id, ev.target);
-        console.log(stanby.childElementCount);
+        if (dragged.className.split(' ')[2] !== 'keep') {
+            cardArr.pop();
+        } else {
+            dragged.classList.remove('keep');
+            KeepCard.classList.remove('true');
+        }
+
+        if (cardArr.length <= 2) {
+            cardArr.push(1);
+            createNumberCard();
+        }
+
+        if (cardArr.length >= 3) {
+            stanby.children[1].classList.add('active');
+            stanby.children[1].setAttribute('draggable', true);
+        }
+
     } else if (ev.target.className == 'keep-card') {
         ev.target.style.background = '';
         ev.target.classList.add('true');
         dragged.style.margin = '0 auto';
+        dragged.classList.add('keep');
 
         dragged.parentNode.removeChild(dragged);
         ev.target.appendChild(dragged);
-        console.log(ev.target);
+
+        cardArr.pop();
+
+        if (cardArr.length <= 2) {
+            cardArr.push(1);
+            createNumberCard();
+        }
+
+        if (cardArr.length >= 3) {
+            stanby.children[1].classList.add('active');
+            stanby.children[1].setAttribute('draggable', true);
+        }
     }
 }
-
-
 
 function directionsCheck(num, target) {
     const dropZone = document.querySelectorAll('.drop-zone');
@@ -142,13 +150,42 @@ function directionsCheck(num, target) {
     const direction = [id - 4, id - 1, id + 4, id + 1];
     const number = Number.parseInt(target.children[0].children[0].innerHTML);
 
-    console.log(number)
     dropZone.forEach((item) => {
         for (let i = 0; i < direction.length; i++) {
             if (item.id == direction[i]) {
-               if (item.className !== 'true') {
-                   console.log(item)
-               }
+                if (item.className.split(' ')[1] !== undefined) {
+                    let itemNumber = Number.parseInt(item.children[0].children[0].innerHTML);
+
+                    if (number >= itemNumber) {
+                        if (number % itemNumber === 0) {
+                            let result = number / itemNumber;
+
+                            if (result === 1) {
+                                score.innerHTML = Number(score.innerHTML) + number + itemNumber; 
+                                item.removeChild(item.children[0]);
+                                target.removeChild(target.children[0]);
+                                item.classList.remove('true');
+                                target.classList.remove('true');
+                            } else {
+                                score.innerHTML = Number(score.innerHTML) + result; 
+                                item.classList.remove('true');
+                                item.removeChild(item.children[0]);
+                                target.children[0].children[0].innerHTML = result;
+                            }
+                        }
+                    } else if (number < itemNumber){
+
+                        if (itemNumber % number === 0) {
+                            
+                            let result1 = itemNumber / number;
+                            score.innerHTML = Number(score.innerHTML) + result1; 
+                            target.classList.remove('true');
+
+                            target.removeChild(target.children[0]);
+                            item.children[0].children[0].innerHTML = result1;
+                        }
+                    }
+                }    
             }
         }
     });
