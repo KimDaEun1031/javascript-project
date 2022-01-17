@@ -30,9 +30,9 @@ Hex code를 랜덤으로 생성해 배경색을 랜덤으로 바꾸는 프로젝
 #### Matching Card - 카드 짝 맞추기
 > https://kimdaeun1031.github.io/javascript-project/cardgame/matchingcard/matchingcard.html
 
-## 8. Divide (제작 중)
+## 8. Divide
 배치한 숫자 블럭을 기준으로 네방향에 나눠지는 숫자 블럭이 있다면 계속 나눠서 0을 만들고 스코어를 올리는 게임 프로젝트
->
+> https://kimdaeun1031.github.io/javascript-project/divide/index.html
 
 ## 9. Javascript30 (제작 중)
 30일치 자바스크립트 프로젝트
