@@ -102,3 +102,6 @@ Hex code를 랜덤으로 생성해 배경색을 랜덤으로 바꾸는 프로젝
 
 #### Day 22. Follow Along Link Highlighter
 > https://kimdaeun1031.github.io/javascript-project/JavaScript30/22%20-%20Follow%20Along%20Link%20Highlighter/index-START.html
+
+#### Day 23. Speech Synthesis
+> https://kimdaeun1031.github.io/javascript-project/JavaScript30/23%20-%20Speech%20Synthesis/index-START.html
