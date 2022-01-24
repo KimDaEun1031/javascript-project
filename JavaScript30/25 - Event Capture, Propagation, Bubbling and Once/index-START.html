@@ -42,7 +42,19 @@
 
 <button></button>
 <script>
+  const btn = document.querySelector('button');
+  const divs = document.querySelectorAll('div');
 
+  divs.forEach(div => {
+    div.addEventListener('click', className, {capture:false , once:true});
+  })
+
+  btn.addEventListener('click', className, {once:true});
+
+  function className() {
+    console.log(this.className);
+    // e.stopPropagation(); // Propagation - 버블링 중단
+  }
 </script>
 </body>
 </html>
