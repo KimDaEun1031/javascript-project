@@ -108,3 +108,6 @@ Hex code를 랜덤으로 생성해 배경색을 랜덤으로 바꾸는 프로젝
 
 #### Day 24. Sticky Nav
 > https://kimdaeun1031.github.io/javascript-project/JavaScript30/24%20-%20Sticky%20Nav/index-START.html
+
+#### Day 25. Event Capture, Propagation, Bubbling, Once
+> https://kimdaeun1031.github.io/javascript-project/JavaScript30/25%20-%20Event%20Capture,%20Propagation,%20Bubbling%20and%20Once/index-START.html
